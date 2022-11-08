@@ -8,14 +8,16 @@ namespace AD1815
     //This script will give speed to the projectile and decide how much damage it does.
     //Should be attached to the projectile. It should already be attached.
     {
-        float iDamage;
-        float speed;
+        [SerializeField] float damage;
+        [SerializeField] float speed;
         float selfDestroyDelay;
         // Start is called before the first frame update
         void Start()
-        {
-            iDamage = 50; //Insert amount of damage here. If you want to test stuff, leave damage at zero.
-            speed = 10; //How fast the arrow travels.
+        { 
+            float offset = Random.Range(-2.5f, 2.5f); //Offset to make projectiles spread out a bit, so it looks nicer.
+            transform.Rotate(0, 0, offset);
+            damage = 50; //Insert amount of damage here. If you want to test stuff, leave damage at zero.
+            speed = 300; //Insert amount of speed here. How fast the projectile travels.
             selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, Default 5 seconds;
             Invoke("DestroySelf", selfDestroyDelay);
         }
@@ -29,12 +31,13 @@ namespace AD1815
         //Collision Detector
         void OnTriggerEnter2D(Collider2D collision) //Change identifier to whatever you want. We want to hit the collider, that is around the sprite/object to simulate a "hit".
         {
-            if (collision.gameObject.name == "Asteroid") // Very simple identifier. Will not work on anything, except object named "Asteroid". Maybe later on, I highly recommend, that we add tag onto enemies like "Enemy" Tag, so identifier can be more universal.
+            if (collision.gameObject.CompareTag("Enemy")) // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy tag.
             {
                 // This has to be fixed on later. Basically there should be method in the target object, that this should call, which then does damage to the target object.
                 // Not very data-secure to directly modify public values, like health in objects. Good practice to learn early on is to use public methods to affect private fields/variables.
 
-                /*collision.gameObject.GetComponent<HealthSystem>().RecieveHit(iDamage); 
+                /*
+                collision.gameObject.GetComponent<AsteroidHandler>().RecieveHit(damage); 
                 DestroySelf();
                 */
             }
