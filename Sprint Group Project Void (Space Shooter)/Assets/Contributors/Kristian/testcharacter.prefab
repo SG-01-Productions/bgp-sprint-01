@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5342699625655803923}
   - component: {fileID: 151531270481689758}
   - component: {fileID: 2591864807150599418}
+  - component: {fileID: 1699805500492491487}
   m_Layer: 0
   m_Name: testcharacter
   m_TagString: Untagged
@@ -114,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dfd185c9b5bb84a9cb54c7833f671e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  RotationSpeed: 0
+  Speed: 50
+  RotationSpeed: 0.5
 --- !u!114 &2591864807150599418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +227,23 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1699805500492491487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677795469931691733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 737c6d156ec4afb42a775f4f34c63a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectToSpawn: {fileID: 5038580681972347400, guid: a44cf7eebe4330e4e9c7d9749711f1b5, type: 3}
+  radius: 300
+  asteroidSpeed: 0
+  minforce: 1000
+  maxforce: 20000
+  numOfAsteroidsInitially: 10
+  spawnInterval: 1
+  initialSpawnDelay: 1
