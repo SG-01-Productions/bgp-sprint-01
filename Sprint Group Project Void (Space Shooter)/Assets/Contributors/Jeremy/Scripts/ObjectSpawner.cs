@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
@@ -37,8 +36,9 @@ public class ObjectSpawner : MonoBehaviour
         float asteroidMass = Random.Range(0f, 1f);
         asteroid.transform.localScale = Vector3.Lerp(new Vector3(1, 1, 1), new Vector3(10, 10, 10), asteroidMass);
         asteroid.mass = Mathf.Lerp(1, 100, asteroidMass);
-
     }
+
+
 
     /*This co-routine waits 4 seconds, calls the Spawn Asteroid method, then waits 4 seconds again before repeating the while loop. We can change wait for seconds to meet our conditions
      for spawning a new asteroid as needed.*/
@@ -68,6 +68,5 @@ public class ObjectSpawner : MonoBehaviour
             Destroy(other.gameObject);
             asteroidCount--;
         }
-        
     }
 }
