@@ -3,11 +3,13 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    public static ObjectSpawner Instance {get; private set;}
 
     public Rigidbody asteroidPrefab1;
     private Rigidbody asteroid;
     private Coroutine spawnerCoroutine;
-    private int asteroidCount = 0;
+    internal float asteroidMass;
+    internal int asteroidCount = 0;
 
     void Start()
     {
@@ -23,19 +25,15 @@ public class ObjectSpawner : MonoBehaviour
         {
             randomPosition = Vector2.up;
         }
-        var randomPositionScaled = randomPosition.normalized * Random.Range(35f, 50f);
+        var randomPositionScaled = randomPosition.normalized * Random.Range(350f, 500f);
         asteroid.transform.position = transform.position + new Vector3(randomPositionScaled.x, randomPositionScaled.y, 0f);
-        var randomOrientation = Random.insideUnitCircle;
-        /*Same thing here but this time it's a ceiling fan.*/
-        if (randomOrientation == Vector2.zero)
-        {
-            randomOrientation = Vector2.up;
-        }
-        asteroid.velocity = randomPosition.normalized * Random.Range(-1, -10);
+        asteroid.velocity = randomPosition.normalized * Random.Range(-50, -250);
         /*The below code gives a random scale value between (1, 1, 1) and (10, 10, 10)*/
         float asteroidMass = Random.Range(0f, 1f);
-        asteroid.transform.localScale = Vector3.Lerp(new Vector3(1, 1, 1), new Vector3(10, 10, 10), asteroidMass);
+        asteroid.transform.localScale = Vector3.Lerp(new Vector3(20, 20, 20), new Vector3(200, 200, 200), asteroidMass);
         asteroid.mass = Mathf.Lerp(1, 100, asteroidMass);
+        float asteroidHealth = asteroidMass * 100f * 50f;
+        asteroid.GetComponent<AsteroidHandler>().SetAsteroidHealth(asteroidHealth);
     }
 
 
