@@ -11,6 +11,23 @@ public class ObjectSpawner : MonoBehaviour
     internal float asteroidMass;
     internal int asteroidCount = 0;
 
+    [SerializeField] private float minSpawnDistance = 350f;
+    [SerializeField] private float maxSpawnDistance = 500f;
+    [SerializeField] private float minVelocity = -50f;
+    [SerializeField] private float maxVelocity = -250f;
+
+    [SerializeField] private float minAsteroidSize = 20f;
+    [SerializeField] private float maxAsteroidSize = 200f;
+
+    [SerializeField] private float minAsteroidMass = 1f;
+    [SerializeField] private float maxAsteroidMass = 100f;
+
+    [SerializeField] private float asteroidHealthMultiplier = 50f;
+
+    [SerializeField] private int maxAsteroidCount = 10;
+
+    [SerializeField] private float asteroidSpawnInterval = 4f;
+
     void Start()
     {
         spawnerCoroutine = StartCoroutine(AsteroidSpawner());
@@ -25,14 +42,15 @@ public class ObjectSpawner : MonoBehaviour
         {
             randomPosition = Vector2.up;
         }
-        var randomPositionScaled = randomPosition.normalized * Random.Range(350f, 500f);
+
+        var randomPositionScaled = randomPosition.normalized * Random.Range(minSpawnDistance, maxSpawnDistance);
         asteroid.transform.position = transform.position + new Vector3(randomPositionScaled.x, randomPositionScaled.y, 0f);
-        asteroid.velocity = randomPosition.normalized * Random.Range(-50, -250);
+        asteroid.velocity = randomPosition.normalized * Random.Range(minVelocity, maxVelocity);
         /*The below code gives a random scale value between (1, 1, 1) and (10, 10, 10)*/
         float asteroidMass = Random.Range(0f, 1f);
-        asteroid.transform.localScale = Vector3.Lerp(new Vector3(20, 20, 20), new Vector3(200, 200, 200), asteroidMass);
-        asteroid.mass = Mathf.Lerp(1, 100, asteroidMass);
-        float asteroidHealth = asteroidMass * 100f * 50f;
+        asteroid.transform.localScale = Vector3.Lerp(new Vector3(minAsteroidSize, minAsteroidSize, minAsteroidSize), new Vector3(maxAsteroidSize, maxAsteroidSize, maxAsteroidSize), asteroidMass);
+        asteroid.mass = Mathf.Lerp(minAsteroidMass, maxAsteroidMass, asteroidMass);
+        float asteroidHealth = asteroidMass * 100f * asteroidHealthMultiplier;
         asteroid.GetComponent<AsteroidHandler>().SetAsteroidHealth(asteroidHealth);
     }
 
@@ -42,19 +60,19 @@ public class ObjectSpawner : MonoBehaviour
      for spawning a new asteroid as needed.*/
     private IEnumerator AsteroidSpawner()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(asteroidSpawnInterval);
         while (true)
         {
-            if (asteroidCount < 10)
+            if (asteroidCount < maxAsteroidCount)
             {
                 SpawnAsteroid();
                 asteroidCount++;
             }
-            if (asteroidCount > 10)
+            if (asteroidCount > maxAsteroidCount)
             {
                 StopCoroutine(spawnerCoroutine);
             }
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(asteroidSpawnInterval);
         }
     }
 
