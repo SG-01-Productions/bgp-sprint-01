@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretScript : MonoBehaviour
+public class RightTurretScript : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
 
@@ -25,9 +25,10 @@ public class TurretScript : MonoBehaviour
             Vector2 Point_1 = new Vector2(mousePosX, mousePosY);
             Vector2 Point_2 = new Vector2(playerPosX, playerPosY);
             float rotation = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * Mathf.Rad2Deg;
-            Vector3 projectileStartRotation = new Vector3(0, 0f, rotation);
+            Vector3 projectileStartRotation = new Vector3(0f, 0f, rotation + -270f);
             Quaternion quaternion = Quaternion.Euler(projectileStartRotation);
-            transform.rotation = quaternion;
+
+            transform.localRotation = quaternion;
             //Instantiate(playerProjectile, transform.position, quaternion);
         }
     }
