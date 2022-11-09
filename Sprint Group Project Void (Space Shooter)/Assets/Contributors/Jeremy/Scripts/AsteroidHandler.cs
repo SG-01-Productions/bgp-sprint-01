@@ -11,7 +11,7 @@ public class AsteroidHandler : MonoBehaviour
 
     private void Start()
     {
-        ObjectSpawner.Instance.asteroidCount++;
+
     }
     public void SetAsteroidHealth(float health)
     {
