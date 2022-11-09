@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class Credits : MonoBehaviour
+public class CreditsDoneBySami : MonoBehaviour
 {
     private TMP_Text creditsText;
     [SerializeField] int credits;
