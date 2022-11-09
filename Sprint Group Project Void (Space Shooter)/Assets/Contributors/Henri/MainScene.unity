@@ -144,35 +144,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.2191636e-14
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: 0.6826429
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.68264276
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.18438768
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.18438771
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
+      value: -59.769
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5725319387583671511, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8732253722681417412, guid: 4a44e7ddd5d26154cb1e23c0c3a2addb, type: 3}
       propertyPath: m_Name
@@ -323,7 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14dfd185c9b5bb84a9cb54c7833f671e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 1
+  Speed: 20
+  StrafeSpeed: 20
   RotationSpeed: 1
 --- !u!1 &575892712
 GameObject:
@@ -336,6 +337,7 @@ GameObject:
   - component: {fileID: 575892715}
   - component: {fileID: 575892714}
   - component: {fileID: 575892713}
+  - component: {fileID: 575892716}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -409,6 +411,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &575892716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575892712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 074be62285755524696e75ce27e925c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 540599225}
+  zoom: 200
 --- !u!1 &1241676661
 GameObject:
   m_ObjectHideFlags: 0
