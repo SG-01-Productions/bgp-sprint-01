@@ -16,8 +16,32 @@ public class CharControl : MonoBehaviour
     [SerializeField] private float StrafeSpeed;
     [SerializeField] private float RotationSpeed;
     private Transform ShipTransform;
-    
-    
+
+    /// <summary>
+    /// Particle system variables
+    /// </summary>
+    [SerializeField] private ParticleSystem leftBooster;
+    [SerializeField] private ParticleSystem rightBooster;
+    private ParticleSystem.MainModule leftBoosterMain;
+    private ParticleSystem.MainModule rightBoosterMain;
+
+    [SerializeField] private ParticleSystem rightSideBooster;
+    [SerializeField] private ParticleSystem leftSideBooster;
+    private ParticleSystem.MainModule rightSideBoosterMain;
+    private ParticleSystem.MainModule leftSideBoosterMain;
+
+    [SerializeField] private ParticleSystem rightSideBooster2;
+    [SerializeField] private ParticleSystem leftSideBooster2;
+    private ParticleSystem.MainModule rightSideBoosterMain2;
+    private ParticleSystem.MainModule leftSideBoosterMain2;
+
+    [SerializeField] private ParticleSystem frontRightBooster;
+    [SerializeField] private ParticleSystem frontLeftBooster;
+    private ParticleSystem.MainModule frontRightBoosterMain;
+    private ParticleSystem.MainModule frontLeftBoosterMain;
+
+    private float alpha;
+
     public void Fire(InputAction.CallbackContext context)
     {
         Debug.Log("Fire!");
@@ -27,6 +51,53 @@ public class CharControl : MonoBehaviour
         InputVector = context.ReadValue<Vector2>();
         CurrentMovement.x = InputVector.x;
         CurrentMovement.y = InputVector.y;
+    }
+
+    private void AnimateParticles()
+    {
+        if (InputVector.y > 0)
+        {
+            leftBoosterMain.startLifetime = 1f;
+            rightBoosterMain.startLifetime = 1f;
+            leftBoosterMain.startSize = 11f;
+            rightBoosterMain.startSize = 11f;
+            frontLeftBooster.Stop();
+            frontRightBooster.Stop();
+        } else if (InputVector.y == 0)
+        {
+            alpha = Mathf.MoveTowards(1f, 0.01f, (1 / 0.1f) * Time.deltaTime);
+            leftBoosterMain.startLifetime = alpha;
+            rightBoosterMain.startLifetime = alpha;
+            leftBoosterMain.startSize = 9f;
+            rightBoosterMain.startSize = 9f;
+            frontLeftBooster.Stop();
+            frontRightBooster.Stop();
+        } else if (InputVector.y < 0)
+        {
+            leftBoosterMain.startLifetime = 0;
+            rightBoosterMain.startLifetime = 0;
+            frontLeftBooster.Play();
+            frontRightBooster.Play();
+        }
+        if (InputVector.x > 0)
+        {
+            leftSideBooster.Play();
+            leftSideBooster2.Play();
+            rightSideBooster.Stop();
+            rightSideBooster2.Stop();
+        } else if (InputVector.x == 0)
+        {
+            leftSideBooster.Stop();
+            leftSideBooster2.Stop();
+            rightSideBooster.Stop();
+            rightSideBooster2.Stop();
+        } else
+        {
+            leftSideBooster.Stop();
+            leftSideBooster2.Stop();
+            rightSideBooster.Play();
+            rightSideBooster2.Play();
+        }
     }
 
     /// <summary>
@@ -52,7 +123,14 @@ public class CharControl : MonoBehaviour
 
     void Start()
     {
-        
+        leftBoosterMain = leftBooster.main;
+        rightBoosterMain = rightBooster.main;
+        frontLeftBoosterMain = frontLeftBooster.main;
+        frontRightBoosterMain = frontRightBooster.main;
+        rightSideBoosterMain = rightSideBooster.main;
+        rightSideBoosterMain2 = rightSideBooster2.main;
+        leftSideBoosterMain = leftSideBooster.main;
+        leftSideBoosterMain2 = leftSideBooster2.main;
     }
     /// <summary>
     /// Getting the data from the player ship for movements
@@ -66,5 +144,6 @@ public class CharControl : MonoBehaviour
     void FixedUpdate()
     {
         MoveShip();
+        AnimateParticles();
     }
 }
