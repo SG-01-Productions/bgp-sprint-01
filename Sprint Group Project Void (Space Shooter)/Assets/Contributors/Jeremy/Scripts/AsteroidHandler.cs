@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AsteroidHandler : MonoBehaviour
 {
-    public float asteroidHealth;
+    //public float asteroidHealth; //Transferred value to HealthManager script. *Sami*
     public Rigidbody asteroidPrefab;
     private Rigidbody asteroid;
     [SerializeField] private GameObject playerShip;
@@ -13,6 +13,7 @@ public class AsteroidHandler : MonoBehaviour
     {
 
     }
+    /* // I transferred all this stuff to HealthManager script. *Sami*
     public void SetAsteroidHealth(float health)
     {
         asteroidHealth = health;
@@ -38,6 +39,7 @@ public class AsteroidHandler : MonoBehaviour
         Destroy(gameObject);
         ObjectSpawner.Instance.asteroidCount--;
     }
+    */
 
     
 }

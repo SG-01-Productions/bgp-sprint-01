@@ -3,7 +3,13 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    public static ObjectSpawner Instance {get; private set;}
+    public static ObjectSpawner Instance {get; private set; }
+    //I do not know with my knowledge why DestroyAsteroid Method in AsteroidHandler (Now in HealthManager) cannot access this. *Sami*
+    //We need to either figure this out, or implement it differently, in a way we can access it.
+
+    //Error Message
+    //NullReferenceException: Object reference not set to an instance of an object
+    //HealthManager.DestroyAsteroid() (at Assets/Contributors/Sami/Scripts/HealthManager.cs:41)
 
     public Rigidbody asteroidPrefab1;
     private Rigidbody asteroid;
@@ -51,7 +57,7 @@ public class ObjectSpawner : MonoBehaviour
         asteroid.transform.localScale = Vector3.Lerp(new Vector3(minAsteroidSize, minAsteroidSize, minAsteroidSize), new Vector3(maxAsteroidSize, maxAsteroidSize, maxAsteroidSize), asteroidMass);
         asteroid.mass = Mathf.Lerp(minAsteroidMass, maxAsteroidMass, asteroidMass);
         float asteroidHealth = asteroidMass * 100f * asteroidHealthMultiplier;
-        asteroid.GetComponent<AsteroidHandler>().SetAsteroidHealth(asteroidHealth);
+        asteroid.GetComponent<HealthManager>().SetAsteroidHealth(asteroidHealth); //Changed AsteroidHandler to HealthManager. *Sami*
     }
 
 
