@@ -670,7 +670,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 50
+  m_Radius: 150
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4645528475911428855
 MonoBehaviour:
@@ -685,6 +685,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidPrefab1: {fileID: 5444550, guid: 36d55426dabb1b2449a5cf305d3fd1cb, type: 3}
+  minSpawnDistance: 1000
+  maxSpawnDistance: 2000
+  minVelocity: -50
+  maxVelocity: -250
+  minAsteroidSize: 20
+  maxAsteroidSize: 200
+  minAsteroidMass: 1
+  maxAsteroidMass: 100
+  asteroidHealthMultiplier: 50
+  maxAsteroidCount: 15
+  asteroidSpawnInterval: 4
 --- !u!1 &8066220233517201272
 GameObject:
   m_ObjectHideFlags: 0
