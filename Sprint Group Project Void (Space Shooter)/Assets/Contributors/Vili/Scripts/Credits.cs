@@ -23,7 +23,7 @@ public class Credits : MonoBehaviour
         if (credits >= missilePrice)
         {
             credits -= missilePrice;
-            missile = +1;
+            missile += +1;
         }
         if (missile >= 1)
         { 
