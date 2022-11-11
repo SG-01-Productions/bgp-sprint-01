@@ -7,7 +7,8 @@ public class Credits : MonoBehaviour
 {
     private TMP_Text creditsText;
     [SerializeField] int credits;
-    // Start is called before the first frame update
+    int missilePrice = 50;
+    int missile;
     void Start()
     {
         credits = 10;
@@ -16,5 +17,18 @@ public class Credits : MonoBehaviour
     void Update()
     {
         creditsText.text = "You have this much of credits : " + credits;
+    }
+    public void TransactionCall(float credits)
+    {
+        if (credits => missilePrice)
+        {
+            credits - missilePrice;
+            missile = +1;
+        }
+        if (missile => 1)
+        { 
+            //Tähän tulee acsesser
+
+        }
     }
 }
