@@ -30,7 +30,6 @@ public class LeftTurretScript : MonoBehaviour
             Vector3 turretStartRotation = new Vector3(0f, 0f, rotation - eulerCompensationAngle.x);
             Quaternion quaternion = Quaternion.Euler(turretStartRotation);
 
-
             transform.localRotation = quaternion;
             //Instantiate(playerProjectile, transform.position, quaternion);
         }

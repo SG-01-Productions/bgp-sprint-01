@@ -123,42 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &335926230 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 792025980406343382, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
-  m_PrefabInstance: {fileID: 4645528476302336943}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &335926235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 335926230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f5990ef47bc0ed49b1fbb938ab71c55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
---- !u!1 &362281804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1728550536288111564, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
-  m_PrefabInstance: {fileID: 4645528476302336943}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &362281809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362281804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4fccb783a68daa44bcfa3077da43aea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
 --- !u!1 &410388791
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +633,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880551615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00030168158, y: -5, z: -500}
+  m_LocalPosition: {x: 0.00045151994, y: -5, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1734,7 +1698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884204654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00030168158, y: -5, z: -500}
+  m_LocalPosition: {x: 0.00045151994, y: -5, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1904,6 +1868,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4645528475911428857, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4645528476503723918, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1956,7 +1924,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceshipWithTurrets
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 335926235, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
-    - {fileID: 362281809, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
