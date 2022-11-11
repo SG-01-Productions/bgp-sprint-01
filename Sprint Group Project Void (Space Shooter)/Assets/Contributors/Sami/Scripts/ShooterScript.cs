@@ -14,6 +14,7 @@ public class ShooterScript : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject playerProjectile;
     [SerializeField] float firerate;
+    // Me and Vili's resource transaction.
     public int credits;
     public int personalMissileAmount;
 
@@ -105,7 +106,6 @@ public class ShooterScript : MonoBehaviour
         firerate = 0.05f; //Setting firerate.
         Debug.Log("ChainBlaster Equipped!");
     }
-
     void ChangeWeaponToMissile()
     {
         machinegunsAreEquipped = false;
@@ -131,6 +131,7 @@ public class ShooterScript : MonoBehaviour
         yield return new WaitForSeconds(firerate);
         shootCooldown = false;
     }
+    // My and Vili's resource exchange methods
     void BuyMissiles()
     {
         GetComponentInParent<Credits>().TransactionCall(credits);
