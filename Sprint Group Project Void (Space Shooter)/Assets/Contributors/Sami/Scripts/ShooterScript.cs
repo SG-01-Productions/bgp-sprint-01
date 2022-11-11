@@ -25,7 +25,7 @@ public class ShooterScript : MonoBehaviour
     // Start is called before the first frame update
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 1000, 30), "Click Left Click to Shoot!"); //Comment this out if you don't want to see text on scene.
+        GUI.Label(new Rect(10, 10, 1000, 30), "Click Left Click to Shoot! Press 1 to switch to blasters. 2 switch to Missiles"); //Comment this out if you don't want to see text on scene.
     }
     void Start()
     {
