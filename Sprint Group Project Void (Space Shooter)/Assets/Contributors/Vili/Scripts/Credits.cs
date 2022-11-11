@@ -11,7 +11,6 @@ public class Credits : MonoBehaviour
     int missileAmount;
     // Missile stuff over
     // Credit studd under
-    }
     // Credit stuff over
     // Missile stuff
     public void TransactionCall(int credits)
