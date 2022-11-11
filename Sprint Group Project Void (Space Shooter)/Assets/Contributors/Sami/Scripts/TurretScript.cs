@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftTurretScript : MonoBehaviour
+public class TurretScript : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
 
@@ -26,9 +26,9 @@ public class LeftTurretScript : MonoBehaviour
             Vector2 Point_2 = new Vector2(playerPosX, playerPosY);
             float rotation = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * Mathf.Rad2Deg;
             Quaternion compensationAngle = GetComponentInParent<CharControl>().transform.rotation;
-            Vector3 eulerCompensationAngle = compensationAngle.eulerAngles; //Compensation for the ship's angle to the turret rotation.
+            Vector3 eulerCompensationAngle = compensationAngle.eulerAngles;
             Vector3 turretStartRotation = new Vector3(0f, 0f, rotation - eulerCompensationAngle.x);
-            Quaternion quaternion = Quaternion.Euler(turretStartRotation);
+            Quaternion quaternion = Quaternion.Euler(-turretStartRotation);
 
             transform.localRotation = quaternion;
             //Instantiate(playerProjectile, transform.position, quaternion);

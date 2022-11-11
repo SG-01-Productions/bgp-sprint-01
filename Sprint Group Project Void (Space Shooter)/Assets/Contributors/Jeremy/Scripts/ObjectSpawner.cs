@@ -58,7 +58,7 @@ public class ObjectSpawner : MonoBehaviour
         asteroid.transform.localScale = Vector3.Lerp(new Vector3(minAsteroidSize, minAsteroidSize, minAsteroidSize), new Vector3(maxAsteroidSize, maxAsteroidSize, maxAsteroidSize), asteroidMass);
         asteroid.mass = Mathf.Lerp(minAsteroidMass, maxAsteroidMass, asteroidMass);
         float asteroidHealth = asteroidMass * 100f * asteroidHealthMultiplier;
-        asteroid.GetComponent<HealthManager>().SetAsteroidHealth(asteroidHealth); //Changed AsteroidHandler to HealthManager. *Sami*
+        asteroid.GetComponent<HealthManager>().SetAsteroidHealth(asteroidHealth);
     }
 
 

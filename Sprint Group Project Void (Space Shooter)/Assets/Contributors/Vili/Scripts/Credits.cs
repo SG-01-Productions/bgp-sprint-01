@@ -4,17 +4,26 @@ using TMPro;
 using UnityEngine;
 
 public class Credits : MonoBehaviour
-{
-    private TMP_Text creditsText;
+{   //Credit stuff under
     [SerializeField] int credits;
-    // Start is called before the first frame update
-    void Start()
+    // Missile stuff under
+    int missilePrice = 50;
+    int missileAmount;
+    // Missile stuff over
+    // Credit studd under
+    // Credit stuff over
+    // Missile stuff
+    public void TransactionCall(int credits)
     {
-        credits = 10;
-        creditsText = gameObject.GetComponent<TMP_Text>();
-    }
-    void Update()
-    {
-        creditsText.text = "You have this much of credits : " + credits;
+        if (credits >= missilePrice)
+        {
+            credits -= missilePrice;
+            missileAmount += +1;
+        }
+        if (missileAmount >= 1)
+        {
+            //This is an Accsessor
+            GetComponentInChildren<ShooterScript>().ReceiveMissiles(missileAmount);
+        }
     }
 }

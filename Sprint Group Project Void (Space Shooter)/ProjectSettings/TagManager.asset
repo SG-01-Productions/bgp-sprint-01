@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Asteroid
   - Spacestation
+  - FieldAsteroid
   layers:
   - Default
   - TransparentFX

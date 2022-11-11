@@ -259,7 +259,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25261223}
   m_CullTransparentMesh: 1
---- !u!1 &93169163
+--- !u!1 &707696768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8066220233517201272, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
+  m_PrefabInstance: {fileID: 4645528476302336943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &711770254
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1680,14 +1685,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880551615}
-  m_LocalRotation: {x: -0.090131566, y: -0.034937415, z: 0.0031631298, w: -0.99531186}
-  m_LocalPosition: {x: -34.48811, y: 84.81953, z: -490.6557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00045151994, y: -5, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 4.021, z: 0}
 --- !u!114 &880551620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8167,8 +8172,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884204654}
-  m_LocalRotation: {x: -0.090131566, y: -0.034937415, z: 0.0031631298, w: -0.99531186}
-  m_LocalPosition: {x: -34.48811, y: 84.81953, z: -490.6557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.00045151994, y: -5, z: -500}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8408,6 +8413,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7258439463815884226, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
   m_PrefabInstance: {fileID: 4645528476302336943}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2648982675940593268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707696768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c10f24b9b5533419d4b9e4901e62bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  credits: 0
 --- !u!1001 &4645528476302336943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8441,6 +8459,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3603248246873519225, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
       propertyPath: m_LocalScale.z
+    - target: {fileID: 4645528475911428857, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4645528476503723918, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
