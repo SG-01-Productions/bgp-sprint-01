@@ -8,11 +8,13 @@ public class MissileProjectile : MonoBehaviour
 //This script will give speed to the projectile and decide how much damage it does.
 //Should be attached to the projectile. It should already be attached.
 {
-    [SerializeField] float damage;
-    [SerializeField] float speed;
     SphereCollider targetingCollider;
     Transform targetTransform;
+
+    [SerializeField] float damage;
+    [SerializeField] float speed;
     float selfDestroyDelay;
+    int credits = 200;
     bool tryingToFindEnemy;
     // Start is called before the first frame update
     void Start()
@@ -91,5 +93,9 @@ public class MissileProjectile : MonoBehaviour
             targetingCollider.radius = 0;
             tryingToFindEnemy = false;
         }
+    }
+    void BuyMissiles()
+    {
+
     }
 }
