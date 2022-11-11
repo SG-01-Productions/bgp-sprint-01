@@ -14,6 +14,8 @@ public class ShooterScript : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject playerProjectile;
     [SerializeField] float firerate;
+    public int credits = 200;
+    public int personalMissileAmount;
 
     //Different bools to create states, which seperate different weapons from another. I.e. You can't use lasers when machineguns are equipped etc.
     bool machinegunsAreEquipped;
@@ -29,9 +31,11 @@ public class ShooterScript : MonoBehaviour
     }
     void Start()
     {
+        BuyMissiles();
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
         DefaultWeaponSetUp();
-        firerate = 0.05f; 
+        firerate = 0.05f;
+        Debug.Log("We have this many missiles " + personalMissileAmount);
     }
 
     // Update is called once per frame
@@ -125,5 +129,13 @@ public class ShooterScript : MonoBehaviour
         shootCooldown = true;
         yield return new WaitForSeconds(firerate);
         shootCooldown = false;
+    }
+    void BuyMissiles()
+    {
+        GetComponentInParent<Credits>().TransactionCall(credits);
+    }
+    public void ReceiveMissiles(int missileAmount)
+    {
+        personalMissileAmount = missileAmount;
     }
 }
