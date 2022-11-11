@@ -20,12 +20,12 @@ public class Credits : MonoBehaviour
     }
     public void TransactionCall(float credits)
     {
-        if (credits => missilePrice)
+        if (credits >= missilePrice)
         {
-            credits - missilePrice;
+            credits -= missilePrice;
             missile = +1;
         }
-        if (missile => 1)
+        if (missile >= 1)
         { 
             //Tähän tulee acsesser
 
