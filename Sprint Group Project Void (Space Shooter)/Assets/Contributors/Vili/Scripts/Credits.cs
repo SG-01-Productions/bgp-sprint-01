@@ -32,7 +32,7 @@ public class Credits : MonoBehaviour
         if (missileAmount >= 1)
         {
             //This is an Accsessor
-            GetComponentInChildren<MissileProjectile>().ReceiveMissiles(missileAmount);
+            GetComponentInChildren<ShooterScript>().ReceiveMissiles(missileAmount);
         }
     }
 }
