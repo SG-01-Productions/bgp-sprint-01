@@ -14,7 +14,8 @@ public class MissileProjectile : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] float speed;
     float selfDestroyDelay;
-    int credits = 200;
+    public int credits = 200;
+    public int personalMissileAmount;
     bool tryingToFindEnemy;
     // Start is called before the first frame update
     void Start()
@@ -96,6 +97,10 @@ public class MissileProjectile : MonoBehaviour
     }
     void BuyMissiles()
     {
-
+        GetComponentInParent<Credits>().TransactionCall(credits);
+    }
+    void ReceiveMissiles(int missileAmount)
+    {
+        personalMissileAmount = missileAmount;
     }
 }
