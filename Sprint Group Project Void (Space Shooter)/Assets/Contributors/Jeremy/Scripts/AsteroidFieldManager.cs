@@ -9,11 +9,6 @@ public class AsteroidFieldManager : MonoBehaviour
     
     [SerializeField] private BoxCollider asteroidSpawnField;
 
-    [SerializeField] private float minSpawnDistance = 350f;
-    [SerializeField] private float maxSpawnDistance = 500f;
-    [SerializeField] private float minVelocity = -50f;
-    [SerializeField] private float maxVelocity = -250f;
-
     [SerializeField] private float minAsteroidSize = 20f;
     [SerializeField] private float maxAsteroidSize = 200f;
 
