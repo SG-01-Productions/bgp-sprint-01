@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "OpenShop",
-                    "type": "Button",
-                    "id": "cebf29d0-5e66-460f-b22e-2849dc8855ef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -344,28 +335,6 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "PauseMenu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "56013437-2140-4111-995f-48bca971e6d3",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "OpenShop",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "af93386c-0ffc-4d4c-aa13-253ade823469",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "OpenShop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

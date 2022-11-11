@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Enemy
   - Asteroid
-  - Spacestation
   - FieldAsteroid
   layers:
   - Default
