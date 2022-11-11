@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftTurretScript : MonoBehaviour
+public class TurretScript : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
 
@@ -28,8 +28,7 @@ public class LeftTurretScript : MonoBehaviour
             Quaternion compensationAngle = GetComponentInParent<CharControl>().transform.rotation;
             Vector3 eulerCompensationAngle = compensationAngle.eulerAngles;
             Vector3 turretStartRotation = new Vector3(0f, 0f, rotation - eulerCompensationAngle.x);
-            Quaternion quaternion = Quaternion.Euler(turretStartRotation);
-
+            Quaternion quaternion = Quaternion.Euler(-turretStartRotation);
 
             transform.localRotation = quaternion;
             //Instantiate(playerProjectile, transform.position, quaternion);
