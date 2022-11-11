@@ -99,7 +99,7 @@ public class MissileProjectile : MonoBehaviour
     {
         GetComponentInParent<Credits>().TransactionCall(credits);
     }
-    void ReceiveMissiles(int missileAmount)
+    public void ReceiveMissiles(int missileAmount)
     {
         personalMissileAmount = missileAmount;
     }
