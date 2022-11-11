@@ -14,8 +14,6 @@ public class MissileProjectile : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] float speed;
     float selfDestroyDelay;
-    public int credits = 200;
-    public int personalMissileAmount;
     bool tryingToFindEnemy;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +25,7 @@ public class MissileProjectile : MonoBehaviour
         tryingToFindEnemy = true;
         targetingCollider = gameObject.AddComponent<SphereCollider>();
         targetingCollider.isTrigger = true;
+        
     }
 
     // Update is called once per frame
@@ -94,13 +93,5 @@ public class MissileProjectile : MonoBehaviour
             targetingCollider.radius = 0;
             tryingToFindEnemy = false;
         }
-    }
-    void BuyMissiles()
-    {
-        GetComponentInParent<Credits>().TransactionCall(credits);
-    }
-    public void ReceiveMissiles(int missileAmount)
-    {
-        personalMissileAmount = missileAmount;
     }
 }
