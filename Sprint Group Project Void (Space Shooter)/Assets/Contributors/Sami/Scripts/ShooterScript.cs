@@ -25,13 +25,13 @@ public class ShooterScript : MonoBehaviour
     // Start is called before the first frame update
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 1000, 30), "Click Left Click to Shoot!"); //Comment this out if you don't want to see text on scene.
+        GUI.Label(new Rect(10, 10, 1000, 30), "Click Left Click to Shoot! Press 1 to switch to blasters. 2 switch to Missiles"); //Comment this out if you don't want to see text on scene.
     }
     void Start()
     {
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
         DefaultWeaponSetUp();
-        firerate = 0.05f; //Setting firerate in start, so it works on all instances.
+        firerate = 0.05f; 
     }
 
     // Update is called once per frame
@@ -42,7 +42,19 @@ public class ShooterScript : MonoBehaviour
             ShootProjectile();
             StartCoroutine(ShootCooldown());
         }
-                
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            ChangeWeaponToChainBlaster();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeWeaponToMissile();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeWeaponToLaser();
+        }
+
     }
     void ShootProjectile()
     {
@@ -73,18 +85,20 @@ public class ShooterScript : MonoBehaviour
         var projectile = Resources.Load("ResourcesPrefabs/ChainBlasterProjectile") as GameObject; //setting projectile variable as GameObject.
         playerProjectile = projectile; //setting projectile variable as playerProjectile GameObject.
         machinegunsAreEquipped = true;
-        Debug.Log("Default Weapon (Machinegun) Set Up!"); // Testing stuff.
+        firerate = 0.05f; //Setting firerate.
+        Debug.Log("Default Weapon (ChainBlaster) Set Up!"); // Testing stuff.
     }
     //Preliminary Set Up, nothing meaningful below this... yet!
-    void ChangeWeaponToMachineGun()
+    void ChangeWeaponToChainBlaster()
     {
         lasersAreEquipped = false;
         missilesAreEquipped = false;
         machinegunsAreEquipped = true;
-        var projectile = Resources.Load("ResourcesPrefabs/TestProjectile") as GameObject;
+        var projectile = Resources.Load("ResourcesPrefabs/ChainBlasterProjectile") as GameObject;
         //var cubePrefab = Resources.Load("Prefabs/PrefabCube") as GameObject;
         playerProjectile = projectile;
-        Debug.Log("Machinegun Equipped!");
+        firerate = 0.05f; //Setting firerate.
+        Debug.Log("ChainBlaster Equipped!");
     }
 
     void ChangeWeaponToMissile()
@@ -94,7 +108,8 @@ public class ShooterScript : MonoBehaviour
         missilesAreEquipped = true;
         Debug.Log("Missiles Equipped!");
         var projectile = Resources.Load("ResourcesPrefabs/TestProjectile") as GameObject;
-        //var cubePrefab = Resources.Load("Prefabs/PrefabCube") as GameObject;
+        playerProjectile = projectile;
+        firerate = 1f; //Setting firerate.
     }
     void ChangeWeaponToLaser()
     {
