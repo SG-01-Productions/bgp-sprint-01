@@ -14,7 +14,7 @@ public class ShooterScript : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject playerProjectile;
     [SerializeField] float firerate;
-    public int credits = 200;
+    public int credits;
     public int personalMissileAmount;
 
     //Different bools to create states, which seperate different weapons from another. I.e. You can't use lasers when machineguns are equipped etc.
@@ -31,6 +31,7 @@ public class ShooterScript : MonoBehaviour
     }
     void Start()
     {
+        credits = 200;
         BuyMissiles();
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
         DefaultWeaponSetUp();
