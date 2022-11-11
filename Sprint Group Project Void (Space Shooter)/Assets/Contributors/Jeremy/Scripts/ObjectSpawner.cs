@@ -36,6 +36,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Start()
     {
+        Instance = this;
         spawnerCoroutine = StartCoroutine(AsteroidSpawner());
     }
 
