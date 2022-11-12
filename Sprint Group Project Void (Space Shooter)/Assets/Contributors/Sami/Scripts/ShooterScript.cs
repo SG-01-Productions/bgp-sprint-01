@@ -13,7 +13,9 @@ public class ShooterScript : MonoBehaviour
 {
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject playerProjectile;
-    [SerializeField] float firerate;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip chainBlasterSound;
+    float firerate;
     // Me and Vili's resource transaction.
     public int credits;
     public int personalMissileAmount;
@@ -32,10 +34,11 @@ public class ShooterScript : MonoBehaviour
     }
     void Start()
     {
+        audioSource = gameObject.AddComponent<AudioSource>();
         credits = 200;
         BuyMissiles();
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
-        DefaultWeaponSetUp();
+        ChangeWeaponToChainBlaster();
         firerate = 0.05f;
         Debug.Log("We have this many missiles " + personalMissileAmount);
     }
@@ -67,32 +70,31 @@ public class ShooterScript : MonoBehaviour
         //Okay this is a bit more complicated. This calculates position between your mouse in the unity world space and player position, calculates
         //angle between them and then turns it into quaternion, so we can spawn GameObject in correct angle, so it points towards the mouse pointer.
         //Camera needs to be ortographic in order for this to work. Otherwise you're probably better off using raycast. Worst case scenario, make another camera for use on flat calculations or the like on 3D games for this, if the situation requires it.
-            
-        Vector3 mousePos = Input.mousePosition;
-        Vector2 mouseScreenPosition = playerCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, playerCamera.nearClipPlane));
 
-        float mousePosX = mouseScreenPosition.x;
-        float mousePosY = mouseScreenPosition.y;
-        float playerPosX = GetComponentInParent<Transform>().position.x;
-        float playerPosY = GetComponentInParent<Transform>().position.y;
+        if (machinegunsAreEquipped == true)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector2 mouseScreenPosition = playerCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, playerCamera.nearClipPlane));
 
-        Vector2 Point_1 = new Vector2(mousePosX, mousePosY);
-        Vector2 Point_2 = new Vector2(playerPosX, playerPosY);
-        float rotation = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * Mathf.Rad2Deg;
-        Vector3 projectileStartRotation = new Vector3(0f, 0f, rotation + 90);
-        Quaternion quaternion = Quaternion.Euler(projectileStartRotation);
+            float mousePosX = mouseScreenPosition.x;
+            float mousePosY = mouseScreenPosition.y;
+            float playerPosX = GetComponentInParent<Transform>().position.x;
+            float playerPosY = GetComponentInParent<Transform>().position.y;
 
-        Instantiate(playerProjectile, transform.position, quaternion);
-    }
-    // Default Weapon Set up for start function.
-    void DefaultWeaponSetUp() //Setting gameObjects that exist in resources folder in the fields manually, instead of going through editor.
-                                //Why? I am going to assume, these weapons are going to be switched a lot as equipment or weapons, can't do that through editor feasibly.
-    {
-        var projectile = Resources.Load("ResourcesPrefabs/ChainBlasterProjectile") as GameObject; //setting projectile variable as GameObject.
-        playerProjectile = projectile; //setting projectile variable as playerProjectile GameObject.
-        machinegunsAreEquipped = true;
-        firerate = 0.05f; //Setting firerate.
-        Debug.Log("Default Weapon (ChainBlaster) Set Up!"); // Testing stuff.
+            Vector2 Point_1 = new Vector2(mousePosX, mousePosY);
+            Vector2 Point_2 = new Vector2(playerPosX, playerPosY);
+            float rotation = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * Mathf.Rad2Deg;
+            Vector3 projectileStartRotation = new Vector3(0f, 0f, rotation + 90);
+            Quaternion quaternion = Quaternion.Euler(projectileStartRotation);
+
+            Instantiate(playerProjectile, transform.position, quaternion);
+            audioSource.PlayOneShot(chainBlasterSound); 
+        }
+        if (missilesAreEquipped == true)
+        {
+            Quaternion startingRotation = GetComponentInParent<CharControl>().transform.rotation;
+            Instantiate(playerProjectile, transform.position, startingRotation);
+        }
     }
     //Preliminary Set Up, nothing meaningful below this... yet!
     void ChangeWeaponToChainBlaster()
@@ -104,6 +106,8 @@ public class ShooterScript : MonoBehaviour
         //var cubePrefab = Resources.Load("Prefabs/PrefabCube") as GameObject;
         playerProjectile = projectile;
         firerate = 0.05f; //Setting firerate.
+        chainBlasterSound = Resources.Load("ChainBlasterSound") as AudioClip;
+        audioSource.clip = chainBlasterSound;
         Debug.Log("ChainBlaster Equipped!");
     }
     void ChangeWeaponToMissile()

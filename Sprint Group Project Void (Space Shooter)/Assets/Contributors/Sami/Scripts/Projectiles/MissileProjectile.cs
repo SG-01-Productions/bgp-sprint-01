@@ -20,7 +20,7 @@ public class MissileProjectile : MonoBehaviour
     {
         damage = 5000; //Insert amount of damage here. If you want to test stuff, leave damage at zero.
         speed = 500; //Insert amount of speed here. How fast the projectile travels.
-        selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, Default 5 seconds;
+        selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, De1fault 5 seconds;
         Invoke("DestroySelf", selfDestroyDelay);
         tryingToFindEnemy = true;
         targetingCollider = gameObject.AddComponent<SphereCollider>();
@@ -39,7 +39,7 @@ public class MissileProjectile : MonoBehaviour
         {
             MissileTargetingRoutine();
             Debug.Log("Starting MissileTargetingRoutine");
-            transform.Translate(new Vector2(0f, 1f) * speed * Time.deltaTime);
+            transform.Translate(new Vector3(0f, 0f, 1f) * speed * Time.deltaTime);
         }
         else if(tryingToFindEnemy == false) //I.e We have found the enemy!
         {
@@ -53,13 +53,13 @@ public class MissileProjectile : MonoBehaviour
             Vector2 Point_1 = new Vector2(enemyPosX, enemyPosY);
             Vector2 Point_2 = new Vector2(playerPosX, playerPosY);
             float rotation = Mathf.Atan2(Point_2.y - Point_1.y, Point_2.x - Point_1.x) * Mathf.Rad2Deg;
-            Vector3 projectileStartRotation = new Vector3(0f, 0f, rotation + 90);
+            Vector3 projectileStartRotation = new Vector3 (rotation, -90f, 0f);
             Quaternion quaternion = Quaternion.Euler(projectileStartRotation);
 
             //This moves projectile forwards.
             Debug.Log("Missile is homing towards Enemy!");
             transform.rotation = quaternion;
-            transform.Translate(new Vector2(0f, 1f) * speed * Time.deltaTime);
+            transform.Translate(speed * Time.deltaTime * new  Vector3(0f, 0f, 1f));
         }
     }
     void DestroySelf()
