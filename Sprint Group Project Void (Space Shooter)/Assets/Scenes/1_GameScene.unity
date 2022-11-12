@@ -1194,6 +1194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceshipWithTurrets
       objectReference: {fileID: 0}
+    - target: {fileID: 8066220233517201272, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8339094209441034258, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
       propertyPath: ShopPanel
       value: 
@@ -1412,6 +1416,10 @@ PrefabInstance:
     - target: {fileID: 6338471733839747963, guid: e7f0e335c3403df4d9dae09d11c51c2d, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6338471733839747963, guid: e7f0e335c3403df4d9dae09d11c51c2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6338471734162002977, guid: e7f0e335c3403df4d9dae09d11c51c2d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
