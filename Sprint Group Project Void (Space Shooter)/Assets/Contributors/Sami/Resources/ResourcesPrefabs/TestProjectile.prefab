@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6889194856371428644}
   - component: {fileID: 5593574784668834376}
   - component: {fileID: -9119700667221223184}
-  - component: {fileID: -3213012204348482538}
   - component: {fileID: -7903651548144971021}
   m_Layer: 0
   m_Name: TestProjectile
@@ -102,20 +101,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3213012204348482538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5938499877587941798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b6a283a21da324495b9e53a29d27fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
-  speed: 0
 --- !u!64 &-7903651548144971021
 MeshCollider:
   m_ObjectHideFlags: 0

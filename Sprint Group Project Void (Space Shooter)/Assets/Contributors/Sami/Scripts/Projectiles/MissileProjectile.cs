@@ -73,7 +73,7 @@ public class MissileProjectile : MonoBehaviour
 
         void PingEnemy()
         {
-            targetingCollider.radius += 1f;
+            targetingCollider.radius += 5f;
         }
     }
     private void OnTriggerEnter(Collider collision)

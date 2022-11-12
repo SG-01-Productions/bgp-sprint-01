@@ -112,7 +112,7 @@ public class ShooterScript : MonoBehaviour
         lasersAreEquipped = false;
         missilesAreEquipped = true;
         Debug.Log("Missiles Equipped!");
-        var projectile = Resources.Load("ResourcesPrefabs/TestProjectile") as GameObject;
+        var projectile = Resources.Load("ResourcesPrefabs/MissileProjectile") as GameObject;
         playerProjectile = projectile;
         firerate = 1f; //Setting firerate.
     }
