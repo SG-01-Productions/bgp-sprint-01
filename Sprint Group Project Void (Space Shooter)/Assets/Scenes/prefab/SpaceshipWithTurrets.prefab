@@ -5801,7 +5801,19 @@ MonoBehaviour:
     m_ActionId: c1fb4ea8-6cee-4ecf-a2ab-f1c278b2fe7a
     m_ActionName: Player/PauseMenu[/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8339094209441034258}
+        m_TargetAssemblyTypeName: SpaceStation, Assembly-CSharp
+        m_MethodName: HandleShopOpen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: cebf29d0-5e66-460f-b22e-2849dc8855ef
     m_ActionName: Player/OpenShop[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
@@ -5975,6 +5987,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7984017844691664101, guid: 1d38ed2e6385fe841906201fc96f7531, type: 3}
   m_PrefabInstance: {fileID: 2641751461962837366}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8339094209441034258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6274368554302578020, guid: 1d38ed2e6385fe841906201fc96f7531, type: 3}
+  m_PrefabInstance: {fileID: 2641751461962837366}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227da818c27de60499047b0fcec6941b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3479885242157949795
 PrefabInstance:
   m_ObjectHideFlags: 0
