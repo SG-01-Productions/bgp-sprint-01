@@ -33,6 +33,7 @@ public class ShooterScript : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = weaponShootSound;
+        audioSource.volume = 0.5f;
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
         ChangeWeaponToChainBlaster();
         firerate = 0.05f;
@@ -89,7 +90,7 @@ public class ShooterScript : MonoBehaviour
         {
             Quaternion startingRotation = GetComponentInParent<CharControl>().transform.rotation;
             Instantiate(playerProjectile, transform.position, startingRotation);
-            audioSource.PlayOneShot(weaponShootSound);
+            audioSource.PlayOneShot(weaponShootSound, 0.25f);
         }
     }
     //Preliminary Set Up, nothing meaningful below this... yet!
