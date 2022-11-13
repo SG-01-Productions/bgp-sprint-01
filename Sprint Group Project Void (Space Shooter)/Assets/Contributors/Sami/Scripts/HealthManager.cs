@@ -45,7 +45,7 @@ public class HealthManager : MonoBehaviour
     public void DestroyAsteroid()
     {
         int incomingCredits = bigAsteroidHealth;
-        AsteroidFieldManager.Instance.asteroidDestroyed(transform.position, asteroidFullHealth * 0.33f);
+        //AsteroidFieldManager.Instance.asteroidDestroyed(transform.position, asteroidFullHealth * 0.33f);
         Debug.Log("We are trying to give these Credits: " + incomingCredits);
         GameObject.Find("SpaceshipWithTurrets").GetComponent<ResourceManager>().AsteroidFieldCredits(incomingCredits);
         Destroy(gameObject);
