@@ -7,6 +7,8 @@ public class HealthManager : MonoBehaviour
     public float asteroidHealth;
     public int bigAsteroidHealth;
     public int bigAsteroidCreditValue;
+    private bool gotHit = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +46,15 @@ public class HealthManager : MonoBehaviour
 
     public void DestroyAsteroid()
     {
+        if (gotHit)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        gotHit = true;
         int incomingCredits = bigAsteroidHealth;
         AsteroidFieldManager.Instance.asteroidDestroyed(transform.position, asteroidFullHealth * 0.33f);
-        GetComponent<ResourceManager>().AsteroidFieldCredits(incomingCredits);
+        ResourceManager.Instance.AsteroidFieldCredits(incomingCredits);
         Destroy(gameObject);
     }
 

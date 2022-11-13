@@ -42,10 +42,10 @@ public class CharControl : MonoBehaviour
 
     private float alpha;
 
-    public void Fire(InputAction.CallbackContext context)
-    {
-        Debug.Log("Fire!");
-    }
+    //public void Fire(InputAction.CallbackContext context)
+    //{
+    //    Debug.Log("Fire!");
+    //}
     public void Move(InputAction.CallbackContext context)
     {
         InputVector = context.ReadValue<Vector2>();

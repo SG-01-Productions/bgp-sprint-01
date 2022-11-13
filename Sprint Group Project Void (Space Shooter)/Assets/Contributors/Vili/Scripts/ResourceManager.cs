@@ -9,11 +9,18 @@ public class ResourceManager : MonoBehaviour //Old Credits script
     // Missile stuff under
     int missilePrice = 50;
     int missileAmount;
+    public static ResourceManager Instance;
+
     // Missile stuff over
     // Credit studd under
     // Credit stuff over
     // Missile stuff
 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Update()
     {
         
