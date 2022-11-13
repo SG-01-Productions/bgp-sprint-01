@@ -27,7 +27,9 @@ public class ResourceManager : MonoBehaviour //Old Credits script
         if (credits >= missilePrice)
         {
             credits -= missilePrice;
-            missileAmount += +1;
+            missileAmount += 1;
+            Debug.Log("We have this amount of credits: " + credits);
+            Debug.Log("We have this amount of missiles: " + missileAmount);
         }
     }
 }
