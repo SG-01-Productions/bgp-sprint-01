@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class SkyboxRotation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Rigidbody playerShip;
+    [SerializeField] private Vector3 skyboxRotationAxis;
+    [SerializeField] private float skyboxRotationAngle;
+    void FixedUpdate()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Vector3 targetVelocity = playerShip.velocity;
+        Vector3 normTargetVelocity = targetVelocity.normalized;
+        if (normTargetVelocity.magnitude > 0)
+        {
+            skyboxRotationAxis = new Vector3(normTargetVelocity.z, skyboxRotationAxis.y, -normTargetVelocity.x) * 0.01f;
+            float rotationDampener = 0.005f;
+            skyboxRotationAngle = skyboxRotationAngle + targetVelocity.magnitude * rotationDampener;
+            RenderSettings.skybox.SetFloat("_Rotation", skyboxRotationAngle);
+            RenderSettings.skybox.SetVector("_RotationAxis", skyboxRotationAxis);
+        }
     }
 }
