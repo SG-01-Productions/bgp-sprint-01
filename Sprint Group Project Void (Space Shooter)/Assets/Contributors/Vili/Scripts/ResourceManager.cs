@@ -15,9 +15,9 @@ public class ResourceManager : MonoBehaviour //Old Credits script
     public static ResourceManager Instance;
 
 
-    [SerializeField] readonly int missilePrice = 50;
+    [SerializeField] readonly int missilePrice = 10000;
     [SerializeField] int missileAmount = 10;
-    [SerializeField] int repairPrice = 100;
+    [SerializeField] int repairPrice = 30000;
 
     [SerializeField] private TMP_Text creditsAmountElement;
 
@@ -30,10 +30,6 @@ public class ResourceManager : MonoBehaviour //Old Credits script
     private void Awake()
     {
         Instance = this;
-    }
-    void Update()
-    {
-        
     }
     // *Sami*
     //Let's redo this Vili, much more sense to attach this to player ship, since we will interacting with Space Station in the future.
