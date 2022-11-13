@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class PlayerHealthSystem : MonoBehaviour
     // Multiplier for finetuning the collision damage
     [SerializeField] private float collisionDamageMultiplier = 1f;
 
+    [SerializeField] private RectTransform healthMaskSprite;
+
     /// <summary>
     /// Function to damage player health specified amount. If player health drops to 0, player will die.
     /// </summary>
@@ -28,7 +31,7 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!isDead)
         {
             playerHealth -= damage;
-
+            UpdateRectMaskPadding();
             if (playerHealth < 0)
             {
                 PlayerDie();
@@ -66,6 +69,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 playerHealth += heal;
             }
+            UpdateRectMaskPadding();
             return playerHealth;
         }
         else return 0f;
@@ -111,5 +115,20 @@ public class PlayerHealthSystem : MonoBehaviour
             var actualDamage = absoluteDamage / 10f * collisionDamageMultiplier;
             DoDamage(actualDamage);
         }
+    }
+
+    private void UpdateRectMaskPadding()
+    {
+        var healthFraction = GetHealthFraction();
+        float rectHeight = healthMaskSprite.rect.height;
+        var padding = (1f - healthFraction) * rectHeight;
+        Debug.Log(padding);
+        var maskRectMask = healthMaskSprite.GetComponent<RectMask2D>();
+        maskRectMask.padding = new Vector4(0, 0, 0, padding);
+    }
+
+    private float GetHealthFraction()
+    {
+        return playerHealth / maxHealth;
     }
 }
