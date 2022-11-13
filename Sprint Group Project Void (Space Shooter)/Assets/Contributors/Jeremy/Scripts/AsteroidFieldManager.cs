@@ -15,7 +15,7 @@ public class AsteroidFieldManager : MonoBehaviour
     [SerializeField] private float minAsteroidMass = 1f;
     [SerializeField] private float maxAsteroidMass = 100f;
 
-    [SerializeField] private float asteroidHealthMultiplier = 50f;
+    [SerializeField] private float asteroidHealthMultiplier = 150f;
 
     [SerializeField] private int asteroidFieldCount = 3;
 
