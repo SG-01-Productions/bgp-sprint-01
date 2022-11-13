@@ -16,7 +16,7 @@ public class ChainBlasterProjectile : MonoBehaviour
         float offset = Random.Range(-2.5f, 2.5f); //Offset to make projectiles spread out a bit, so it looks nicer.
         transform.Rotate(0, 0, offset);
         damage = 50; //Insert amount of damage here. If you want to test stuff, leave damage at zero.
-        speed = 300; //Insert amount of speed here. How fast the projectile travels.
+        speed = 500; //Insert amount of speed here. How fast the projectile travels.
         selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, Default 5 seconds;
         Invoke("DestroySelf", selfDestroyDelay);
     }
