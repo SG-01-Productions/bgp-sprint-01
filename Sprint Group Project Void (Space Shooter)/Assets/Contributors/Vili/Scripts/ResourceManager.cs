@@ -59,6 +59,7 @@ public class ResourceManager : MonoBehaviour //Old Credits script
     {
         if (credits >= repairPrice)
         {
+            credits -= repairPrice;
             GetComponent<PlayerHealthSystem>().HealFull();
             UpdatePlayerCredits();
         }
