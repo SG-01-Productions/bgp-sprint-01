@@ -103,6 +103,7 @@ public class MissileProjectile : MonoBehaviour
         AudioSource audioSource = deathSoundPlayerObject.AddComponent<AudioSource>();
         AudioClip audioClip = Resources.Load("MissileExplosionSound") as AudioClip;
         audioSource.clip = audioClip;
+        audioSource.volume = 0.25f;
         audioSource.Play();
         
     }

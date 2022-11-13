@@ -89,7 +89,7 @@ public class ShooterScript : MonoBehaviour
         {
             Quaternion startingRotation = GetComponentInParent<CharControl>().transform.rotation;
             Instantiate(playerProjectile, transform.position, startingRotation);
-            audioSource.PlayOneShot(weaponShootSound, 0.5f);
+            audioSource.PlayOneShot(weaponShootSound);
         }
     }
     //Preliminary Set Up, nothing meaningful below this... yet!
