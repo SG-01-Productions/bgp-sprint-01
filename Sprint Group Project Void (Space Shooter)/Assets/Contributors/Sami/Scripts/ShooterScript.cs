@@ -16,9 +16,6 @@ public class ShooterScript : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip weaponShootSound;
     float firerate;
-    // Me and Vili's resource transaction.
-    public int credits;
-    public int personalMissileAmount;
 
     //Different bools to create states, which seperate different weapons from another. I.e. You can't use lasers when machineguns are equipped etc.
     bool machinegunsAreEquipped;
@@ -36,12 +33,9 @@ public class ShooterScript : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = weaponShootSound;
-        credits = 200;
-        BuyMissiles();
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
         ChangeWeaponToChainBlaster();
         firerate = 0.05f;
-        Debug.Log("We have this many missiles " + personalMissileAmount);
     }
 
     // Update is called once per frame
@@ -136,14 +130,5 @@ public class ShooterScript : MonoBehaviour
         shootCooldown = true;
         yield return new WaitForSeconds(firerate);
         shootCooldown = false;
-    }
-    // My and Vili's resource exchange methods
-    void BuyMissiles()
-    {
-        GetComponentInParent<Credits>().TransactionCall(credits);
-    }
-    public void ReceiveMissiles(int missileAmount)
-    {
-        personalMissileAmount = missileAmount;
     }
 }

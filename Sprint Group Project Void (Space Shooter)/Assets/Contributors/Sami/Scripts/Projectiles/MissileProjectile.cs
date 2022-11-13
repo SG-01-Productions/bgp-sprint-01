@@ -10,8 +10,6 @@ public class MissileProjectile : MonoBehaviour
 {
     SphereCollider targetingCollider;
     Transform targetTransform;
-    AudioSource audioSource;
-    AudioClip audioClip;
 
     [SerializeField] float damage;
     [SerializeField] float speed;
@@ -22,7 +20,7 @@ public class MissileProjectile : MonoBehaviour
     void Start()
     {
         damage = 5000; //Insert amount of damage here. If you want to test stuff, leave damage at zero.
-        speed = 500; //Insert amount of speed here. How fast the projectile travels.1
+        speed = 500; //Insert amount of speed here. How fast the projectile travels.
         selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, Default 5 seconds;
         Invoke("DestroySelf", selfDestroyDelay);
         tryingToFindEnemy = true;
