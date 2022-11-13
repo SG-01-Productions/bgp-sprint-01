@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     private float asteroidFullHealth;
     public float asteroidHealth;
+    public int bigAsteroidHealth;
+    public int bigAsteroidCreditValue;
     // Start is called before the first frame update
     void Start()
     {
-        
+        bigAsteroidHealth = Convert.ToInt32(asteroidHealth);
+        bigAsteroidCreditValue = bigAsteroidHealth;
     }
 
     // Update is called once per frame
@@ -42,8 +44,10 @@ public class HealthManager : MonoBehaviour
 
     public void DestroyAsteroid()
     {
+        int incomingCredits = bigAsteroidHealth;
         AsteroidFieldManager.Instance.asteroidDestroyed(transform.position, asteroidFullHealth * 0.33f);
-
+        GetComponent<ResourceManager>().AsteroidFieldCredits(incomingCredits);
         Destroy(gameObject);
     }
+
 }
