@@ -2110,7 +2110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 837470719405460588, guid: e278140b1abe3f0498d1f6c098e7cd22, type: 3}
       propertyPath: m_Name
-      value: SpaceshipWithTurrets Variant
+      value: SpaceshipWithTurrets
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e278140b1abe3f0498d1f6c098e7cd22, type: 3}

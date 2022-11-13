@@ -42,6 +42,8 @@ public class ResourceManager : MonoBehaviour //Old Credits script
 
     public void AsteroidFieldCredits(int incomingCredits)
     {
+        Debug.Log("We have this amount of credits before transaction " + credits);
         credits += incomingCredits;
+        Debug.Log("After transaction we have this much of credits " + credits);
     }
 }
