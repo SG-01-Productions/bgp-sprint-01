@@ -58,6 +58,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 2873625871978426032, guid: 6bb44ed4f1314914aa5cfb0c17d675aa, type: 3}
+      propertyPath: m_Name
+      value: HealthMask
+      objectReference: {fileID: 0}
     - target: {fileID: 5089916160339353798, guid: 6bb44ed4f1314914aa5cfb0c17d675aa, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
