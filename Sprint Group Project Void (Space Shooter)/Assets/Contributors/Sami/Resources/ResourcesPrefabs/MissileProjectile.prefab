@@ -49,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 0
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.64705884, g: 0.64705884, b: 0.64705884, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.6, b: 0, a: 1}
@@ -4873,6 +4873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   speed: 0
+  missileTurnrate: 0.01
 --- !u!1 &155060
 GameObject:
   m_ObjectHideFlags: 0
@@ -9782,7 +9783,7 @@ LensFlare:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159164}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Flare: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_Brightness: 1

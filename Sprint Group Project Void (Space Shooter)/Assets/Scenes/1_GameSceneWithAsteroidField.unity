@@ -2761,10 +2761,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceshipWithTurrets
       objectReference: {fileID: 0}
-    - target: {fileID: 8066220233517201272, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 8339094209441034258, guid: eefb62d9bf4863f48a988d914eec6fcd, type: 3}
       propertyPath: ShopPanel
       value: 

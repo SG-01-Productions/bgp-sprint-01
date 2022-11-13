@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
@@ -13,6 +14,12 @@ public class PlayerHealthSystem : MonoBehaviour
     [SerializeField] private bool isDead = false;
 
     [SerializeField] private GameObject finalScoreScreen;
+    // The maximum collision velocity that does not harm the player
+    [SerializeField] private float safeCollisionVelocity = 65f;
+    // Multiplier for finetuning the collision damage
+    [SerializeField] private float collisionDamageMultiplier = 1f;
+
+    [SerializeField] private RectTransform healthMaskSprite;
 
     /// <summary>
     /// Function to damage player health specified amount. If player health drops to 0, player will die.
@@ -24,7 +31,7 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!isDead)
         {
             playerHealth -= damage;
-
+            UpdateRectMaskPadding();
             if (playerHealth < 0)
             {
                 PlayerDie();
@@ -40,7 +47,9 @@ public class PlayerHealthSystem : MonoBehaviour
     public void PlayerDie()
     {
         isDead = true;
-        Destroy(playerObject);
+        //Destroy(playerObject);
+        //some scripts break if playerobject is destroyed, so better set active state
+        playerObject.SetActive(false);
         finalScoreScreen.SetActive(true);
     }
     /// <summary>
@@ -60,6 +69,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 playerHealth += heal;
             }
+            UpdateRectMaskPadding();
             return playerHealth;
         }
         else return 0f;
@@ -85,13 +95,40 @@ public class PlayerHealthSystem : MonoBehaviour
     }
 
     // This part is only for debugging
-    private void Update()
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.K))
+    //    {
+    //        var playerhealth = Instance.DoDamage(5.5543f);
+    //        Debug.Log(playerhealth);
+    //    }
+    //}
+    // ^ This part is only for debugging
+
+    // Damage to the player will be done based on the relative velocity of the collision
+    private void OnCollisionEnter(Collision collision)
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        Debug.Log($"Player collided with velocity of {collision.relativeVelocity.magnitude}");
+        if (collision.relativeVelocity.magnitude > safeCollisionVelocity)
         {
-            var playerhealth = Instance.DoDamage(5.5543f);
-            Debug.Log(playerhealth);
+            var absoluteDamage = Mathf.Abs(collision.relativeVelocity.magnitude);
+            var actualDamage = absoluteDamage / 10f * collisionDamageMultiplier;
+            DoDamage(actualDamage);
         }
     }
-    // ^ This part is only for debugging
+
+    private void UpdateRectMaskPadding()
+    {
+        var healthFraction = GetHealthFraction();
+        float rectHeight = healthMaskSprite.rect.height;
+        var padding = (1f - healthFraction) * rectHeight;
+        Debug.Log(padding);
+        var maskRectMask = healthMaskSprite.GetComponent<RectMask2D>();
+        maskRectMask.padding = new Vector4(0, 0, 0, padding);
+    }
+
+    private float GetHealthFraction()
+    {
+        return playerHealth / maxHealth;
+    }
 }
