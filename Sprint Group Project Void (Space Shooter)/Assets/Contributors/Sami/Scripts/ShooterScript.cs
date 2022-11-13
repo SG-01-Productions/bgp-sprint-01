@@ -14,7 +14,7 @@ public class ShooterScript : MonoBehaviour
     [SerializeField] Camera playerCamera;
     [SerializeField] GameObject playerProjectile;
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip chainBlasterSound;
+    [SerializeField] AudioClip weaponShootSound;
     float firerate;
     // Me and Vili's resource transaction.
     public int credits;
@@ -35,6 +35,7 @@ public class ShooterScript : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = weaponShootSound;
         credits = 200;
         BuyMissiles();
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
@@ -88,12 +89,13 @@ public class ShooterScript : MonoBehaviour
             Quaternion quaternion = Quaternion.Euler(projectileStartRotation);
 
             Instantiate(playerProjectile, transform.position, quaternion);
-            audioSource.PlayOneShot(chainBlasterSound); 
+            audioSource.PlayOneShot(weaponShootSound); 
         }
         if (missilesAreEquipped == true)
         {
             Quaternion startingRotation = GetComponentInParent<CharControl>().transform.rotation;
             Instantiate(playerProjectile, transform.position, startingRotation);
+            audioSource.PlayOneShot(weaponShootSound, 0.5f);
         }
     }
     //Preliminary Set Up, nothing meaningful below this... yet!
@@ -102,13 +104,12 @@ public class ShooterScript : MonoBehaviour
         lasersAreEquipped = false;
         missilesAreEquipped = false;
         machinegunsAreEquipped = true;
+        Debug.Log("ChainBlaster Equipped!");
         var projectile = Resources.Load("ResourcesPrefabs/ChainBlasterProjectile") as GameObject;
         //var cubePrefab = Resources.Load("Prefabs/PrefabCube") as GameObject;
         playerProjectile = projectile;
         firerate = 0.05f; //Setting firerate.
-        chainBlasterSound = Resources.Load("ChainBlasterSound") as AudioClip;
-        audioSource.clip = chainBlasterSound;
-        Debug.Log("ChainBlaster Equipped!");
+        weaponShootSound = Resources.Load("ChainBlasterSound") as AudioClip;
     }
     void ChangeWeaponToMissile()
     {
@@ -118,7 +119,8 @@ public class ShooterScript : MonoBehaviour
         Debug.Log("Missiles Equipped!");
         var projectile = Resources.Load("ResourcesPrefabs/MissileProjectile") as GameObject;
         playerProjectile = projectile;
-        firerate = 1f; //Setting firerate.
+        firerate = 2f; //Setting firerate.
+        weaponShootSound = Resources.Load("MissileLaunchSound") as AudioClip;
     }
     void ChangeWeaponToLaser()
     {
