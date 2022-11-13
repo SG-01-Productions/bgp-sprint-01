@@ -228,9 +228,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   playerProjectile: {fileID: 7625222000712260458, guid: 61c5689ce2e27804993a204b9ce5249d, type: 3}
-  firerate: 0
-  credits: 0
-  personalMissileAmount: 0
+  audioSource: {fileID: 0}
+  weaponShootSound: {fileID: 0}
 --- !u!1 &1728550536288111564
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,9 +542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
   playerProjectile: {fileID: 7625222000712260458, guid: 61c5689ce2e27804993a204b9ce5249d, type: 3}
-  firerate: 0
-  credits: 0
-  personalMissileAmount: 0
+  audioSource: {fileID: 0}
+  weaponShootSound: {fileID: 0}
 --- !u!1 &4123787592614122666
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5529,7 @@ GameObject:
   - component: {fileID: 2097873776123009534}
   m_Layer: 0
   m_Name: SpaceshipWithTurrets
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
