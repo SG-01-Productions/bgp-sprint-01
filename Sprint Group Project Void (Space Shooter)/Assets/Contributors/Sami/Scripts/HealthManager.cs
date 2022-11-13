@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
+    private float asteroidFullHealth;
     public float asteroidHealth;
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,11 @@ public class HealthManager : MonoBehaviour
     {
         
     }
+    
+    
     public void SetAsteroidHealth(float health)
     {
+        asteroidFullHealth = health;
         asteroidHealth = health;
     }
 
@@ -38,9 +42,8 @@ public class HealthManager : MonoBehaviour
 
     public void DestroyAsteroid()
     {
-        //ObjectSpawner.Instance.asteroidCount--; 
-        //This^ is the issue. Unity can't find referenced value for some reason, or something like that.
-        //I have no idea why. I tried to troubleshoot, but only way I could fix it, would be to do my own implementation of the asteroid count. Which would be enroaching upon Jeremy's Territory.
+        AsteroidFieldManager.Instance.asteroidDestroyed(transform.position, asteroidFullHealth * 0.33f);
+
         Destroy(gameObject);
     }
 }

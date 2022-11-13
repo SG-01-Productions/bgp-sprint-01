@@ -80,13 +80,13 @@ public class MissileProjectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") && tryingToFindEnemy == false)  // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy and Asteroid tag.
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && tryingToFindEnemy == false)  // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy and Asteroid tag.
         {
             collision.gameObject.GetComponent<HealthManager>().ReceiveDamage(damage);
             DestroySelf();
             //Debug.Log("Missile hit Enemy Target! " + collision.name);
         }
-        else if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") && tryingToFindEnemy == true)
+        else if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && tryingToFindEnemy == true)
         {
 
             targetTransform = collision.gameObject.GetComponent<Transform>();

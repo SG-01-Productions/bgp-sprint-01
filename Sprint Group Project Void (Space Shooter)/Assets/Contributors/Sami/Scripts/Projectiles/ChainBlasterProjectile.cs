@@ -30,7 +30,7 @@ public class ChainBlasterProjectile : MonoBehaviour
     //Collision Detector
     void OnTriggerEnter(Collider collision) //Change identifier to whatever you want. We want to hit the collider, that is around the sprite/object to simulate a "hit".
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid"))  // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy tag.
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid"))  // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy tag.
         {
             // This has to be fixed on later. Basically there should be method in the target object, that this should call, which then does damage to the target object.
             // Not very data-secure to directly modify public values, like health in objects. Good practice to learn early on is to use public methods to affect private fields/variables.
