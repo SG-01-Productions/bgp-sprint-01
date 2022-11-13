@@ -32,4 +32,9 @@ public class ResourceManager : MonoBehaviour //Old Credits script
             Debug.Log("We have this amount of missiles: " + missileAmount);
         }
     }
+
+    public void AsteroidFieldCredits(int incomingCredits)
+    {
+        credits += incomingCredits;
+    }
 }

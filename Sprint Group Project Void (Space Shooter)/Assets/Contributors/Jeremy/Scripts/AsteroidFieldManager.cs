@@ -17,19 +17,32 @@ public class AsteroidFieldManager : MonoBehaviour
 
     [SerializeField] private float asteroidHealthMultiplier = 150f;
 
-    [SerializeField] private int asteroidFieldCount = 3;
+    [SerializeField] private int asteroidFieldCount = 9;
 
     [SerializeField] private int asteroidFieldObjectsCount = 10;
 
     [SerializeField] private int asteroidFieldRadius = 20;
 
+    public static AsteroidFieldManager Instance;
     private void Start()
     {
+        Instance = this;
         for (int i = 0; i < asteroidFieldCount; i++)
         {
             AsteroidFieldSpawner();
         }    
     }
+
+    internal void asteroidDestroyed(Vector3 position, float health)
+    {
+        if (health < 100f)
+        {
+            return;
+        }
+        SpawnAsteroid(position, health);
+        SpawnAsteroid(position, health);
+    }
+
     public Vector3 GetRandomPointInsideCollider(BoxCollider boxCollider)
     {
         Vector3 extents = boxCollider.size / 2f;
@@ -49,6 +62,16 @@ public class AsteroidFieldManager : MonoBehaviour
         }
     }
 
+    private void SpawnAsteroid(Vector3 position, float health)
+    {
+        asteroid = Instantiate(asteroidsPrefabs[Random.Range(0, asteroidsPrefabs.Length)]);
+        asteroid.transform.position = position;
+        float asteroidMass = health / 100 / asteroidHealthMultiplier;
+        asteroid.transform.localScale = Vector3.Lerp(new Vector3(minAsteroidSize, minAsteroidSize, minAsteroidSize), new Vector3(maxAsteroidSize, maxAsteroidSize, maxAsteroidSize), asteroidMass);
+        asteroid.mass = Mathf.Lerp(minAsteroidMass, maxAsteroidMass, asteroidMass);
+        float asteroidHealth = asteroidMass * 100f * asteroidHealthMultiplier;
+        asteroid.GetComponent<HealthManager>().SetAsteroidHealth(asteroidHealth);
+    }
     private void SpawnAsteroid(Vector3 position)
     {   
         asteroid = Instantiate(asteroidsPrefabs[Random.Range(0, asteroidsPrefabs.Length)]);
