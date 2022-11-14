@@ -7,11 +7,11 @@ Project Void is a game demo project that was originally started as a Sprint (1-w
 Game title: Project Void
 
 Creators:
-- Sami Uski
-- Jeremy LeBlanc
-- Kristian Kantola
-- Henri Kivimaa
-- Vili Jalonen
+- [Sami Uski](https://github.com/Rykmentti)
+- [Jeremy LeBlanc](https://github.com/LeBlancJS88)
+- [Kristian Kantola](https://github.com/K9958)
+- [Henri Kivimaa](https://github.com/Hemiger)
+- [Vili Jalonen](https://github.com/Vilonen)
 
 Build can be found from this link: [Link](https://kantola.eu/files/projectvoid.zip)
 
