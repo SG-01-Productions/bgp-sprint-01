@@ -9,7 +9,7 @@ Genre: Space Shooter  <br>
 Perspective: Top-down, 2.5D  <br>
 Licence: Freemium
 
-Project contains Unity Asset Store assets that the SG-Productions have a licence to use. Those assets are available on free at [https://assetstore.unity.com/](https://assetstore.unity.com/).
+Project contains Unity Asset Store assets that the SG-01 Productions have a licence to use. Those assets are available on free at [https://assetstore.unity.com/](https://assetstore.unity.com/).
 
 
 Creators:
