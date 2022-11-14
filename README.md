@@ -1,6 +1,6 @@
 # SG-01 Productions: Project Void
 
-Project Void is an *open source* game demo project that was originally started as a Sprint (1-week) project for JAMK course Basics of Game Programming (BGP). 
+Project Void is a game demo development project that was originally started as a sprint (1-week) project for JAMK (Jyväskylä School of Applied Sciences) course Basics of Game Programming (BGP).
 
 > The result of the one week project can be found from the branch `alpha-release`. The `main` branch is a continuation of the project.
 
