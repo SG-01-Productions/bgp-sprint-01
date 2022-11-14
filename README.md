@@ -4,7 +4,9 @@ Project Void is a game demo project that was originally started as a Sprint (1-w
 
 > The result of the one week project can be found from the branch `alpha-release`. The `main` branch is a continuation of the project.
 
-Game title: Project Void
+Game title: Project Void<br>
+Genre: Space Shooter<br>
+Perspective: Top-down, 2.5D
 
 Creators:
 - [Sami Uski](https://github.com/Rykmentti)
@@ -13,6 +15,6 @@ Creators:
 - [Henri Kivimaa](https://github.com/Hemiger)
 - [Vili Jalonen](https://github.com/Vilonen)
 
-Build can be found from this link: [Link](https://kantola.eu/files/projectvoid.zip)
+Build can be found from here: [Project Void version alpha](https://kantola.eu/files/projectvoid.zip)
 
 Game can also be player at [play.unity.com](https://play.unity.com/mg/other/project-void-sprint-week-project).
