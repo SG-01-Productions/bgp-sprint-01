@@ -4,9 +4,11 @@ Project Void is a game demo development project that was originally started as a
 
 > The result of the one week project can be found from the branch `alpha-release`. The `main` branch is a continuation of the project.
 
-Game title: Project Void<br>
-Genre: Space Shooter<br>
-Perspective: Top-down, 2.5D
+Game title: Project Void  <br>
+Genre: Space Shooter  <br>
+Perspective: Top-down, 2.5D  <br>
+Licence: Freemium
+
 
 Creators:
 - [Sami Uski](https://github.com/Rykmentti)
