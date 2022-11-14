@@ -15,14 +15,16 @@ public class ShooterScript : MonoBehaviour
     [SerializeField] GameObject playerProjectile;
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip weaponShootSound;
-    float firerate;
+    float chainBlasterFirerate;
+    float missileFirerate;
 
     //Different bools to create states, which seperate different weapons from another. I.e. You can't use lasers when machineguns are equipped etc.
-    bool machinegunsAreEquipped;
+    bool chainBlastersAreEquipped;
     bool lasersAreEquipped;
     bool missilesAreEquipped;
 
-    bool shootCooldown;
+    bool chainBlasterShootCooldown;
+    bool missileShootCooldown;
 
     // Start is called before the first frame update
     void OnGUI()
@@ -36,16 +38,22 @@ public class ShooterScript : MonoBehaviour
         audioSource.volume = 0.5f;
         playerCamera = Camera.main; //Setting Unity Main camera as playerCamera for this script.
         ChangeWeaponToChainBlaster();
-        firerate = 0.05f;
+        chainBlasterFirerate = 0.05f;
+        missileFirerate = 2f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && shootCooldown == false)
+        if (Input.GetKey(KeyCode.Mouse0) && chainBlasterShootCooldown == false && chainBlastersAreEquipped == true)
         {
             ShootProjectile();
             StartCoroutine(ShootCooldown());
+        }
+        if (Input.GetKey(KeyCode.Mouse0) && missileShootCooldown == false && missilesAreEquipped == true)
+        {
+            ShootProjectile();
+            StartCoroutine(MissileShootCooldown());
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -67,7 +75,7 @@ public class ShooterScript : MonoBehaviour
         //angle between them and then turns it into quaternion, so we can spawn GameObject in correct angle, so it points towards the mouse pointer.
         //Camera needs to be ortographic in order for this to work. Otherwise you're probably better off using raycast. Worst case scenario, make another camera for use on flat calculations or the like on 3D games for this, if the situation requires it.
 
-        if (machinegunsAreEquipped == true)
+        if (chainBlastersAreEquipped == true)
         {
             Vector3 mousePos = Input.mousePosition;
             Vector2 mouseScreenPosition = playerCamera.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, playerCamera.nearClipPlane));
@@ -98,28 +106,26 @@ public class ShooterScript : MonoBehaviour
     {
         lasersAreEquipped = false;
         missilesAreEquipped = false;
-        machinegunsAreEquipped = true;
+        chainBlastersAreEquipped = true;
         Debug.Log("ChainBlaster Equipped!");
         var projectile = Resources.Load("ResourcesPrefabs/ChainBlasterProjectile") as GameObject;
         //var cubePrefab = Resources.Load("Prefabs/PrefabCube") as GameObject;
         playerProjectile = projectile;
-        firerate = 0.05f; //Setting firerate.
         weaponShootSound = Resources.Load("ChainBlasterSound") as AudioClip;
     }
     void ChangeWeaponToMissile()
     {
-        machinegunsAreEquipped = false;
+        chainBlastersAreEquipped = false;
         lasersAreEquipped = false;
         missilesAreEquipped = true;
         Debug.Log("Missiles Equipped!");
         var projectile = Resources.Load("ResourcesPrefabs/MissileProjectile") as GameObject;
         playerProjectile = projectile;
-        firerate = 2f; //Setting firerate.
         weaponShootSound = Resources.Load("MissileLaunchSound") as AudioClip;
     }
     void ChangeWeaponToLaser()
     {
-        machinegunsAreEquipped = false;
+        chainBlastersAreEquipped = false;
         missilesAreEquipped = false;
         lasersAreEquipped = true;
         Debug.Log("Lasers Equipped!");
@@ -128,8 +134,15 @@ public class ShooterScript : MonoBehaviour
     }
     IEnumerator ShootCooldown()
     {
-        shootCooldown = true;
-        yield return new WaitForSeconds(firerate);
-        shootCooldown = false;
+        chainBlasterShootCooldown = true;
+        yield return new WaitForSeconds(chainBlasterFirerate);
+        chainBlasterShootCooldown = false;
+    }
+
+    IEnumerator MissileShootCooldown()
+    {
+        missileShootCooldown = true;
+        yield return new WaitForSeconds(missileFirerate);
+        missileShootCooldown = false;
     }
 }

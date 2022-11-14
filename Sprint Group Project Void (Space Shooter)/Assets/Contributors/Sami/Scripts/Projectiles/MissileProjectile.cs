@@ -17,7 +17,6 @@ public class MissileProjectile : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float missileTurnrate = 0.01f;
     float selfDestroyDelay;
-    bool tryingToFindEnemy;
     bool isDestroyed;
     // Start is called before the first frame update
     void Start()
@@ -31,9 +30,9 @@ public class MissileProjectile : MonoBehaviour
         speed = 500; //Insert amount of speed here. How fast the projectile travels.
         selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, Default 5 seconds;
         Invoke("DestroySelf", selfDestroyDelay);
-        tryingToFindEnemy = true;
         targetingCollider = gameObject.AddComponent<SphereCollider>();
         targetingCollider.isTrigger = true;
+        MissileTargetingRoutine();
         
     }
 
@@ -45,15 +44,11 @@ public class MissileProjectile : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, 0f); // So missile forever stays in 0 in z axis. Hack, so Quaternion.Slerp stays in 0 position in Z axis
             if (targetTransform == null)
             {
-                tryingToFindEnemy = true;
-            }
-            if (tryingToFindEnemy == true)
-            {
                 MissileTargetingRoutine();
                 //Debug.Log("Starting MissileTargetingRoutine");
                 transform.Translate(new Vector3(0f, 0f, 1f) * speed * Time.deltaTime);
             }
-            else if (tryingToFindEnemy == false) //I.e We have found the enemy!
+            else if (targetTransform != null && !targetTransform.Equals(null)) //I.e We have found the enemy!
             {
                 Vector2 enemyScreenPosition = targetTransform.position;
 
@@ -103,18 +98,24 @@ public class MissileProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && targetingCollider.enabled == false)  // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy and Asteroid tag.
         {
-            collision.gameObject.GetComponent<HealthManager>().ReceiveDamage(damage);
-            DestroySelf();
+            if (collision.gameObject.transform == targetTransform)
+            {
+                collision.gameObject.GetComponent<HealthManager>().ReceiveDamage(damage);
+                DestroySelf();
+            }
+            else
+            {
+                targetTransform = collision.gameObject.GetComponent<Transform>();
+            }
             //Debug.Log("Missile hit Enemy Target! " + collision.name);
         }
-        else if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && targetingCollider.enabled == true)
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && targetingCollider.enabled == true)
         {
-
-            targetTransform = collision.gameObject.GetComponent<Transform>();
-            //Debug.Log("Missile has detected an enemy! " + collision.name + " It's location is at " + targetTransform.position);
             targetingCollider.enabled = false;
             targetingCollider.radius = 0;
-            tryingToFindEnemy = false;
+            targetTransform = collision.gameObject.GetComponent<Transform>();
+            //Debug.Log("Missile has detected an enemy! " + collision.name + " It's location is at " + targetTransform.position);
+            
         }
     }
     //Much better to implemethis with enabling and disabling of components, rather than destroy object and create a DeathSoundPlayer
