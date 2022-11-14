@@ -17,4 +17,4 @@ Creators:
 
 Build can be found from here: [Project Void version alpha](https://kantola.eu/files/projectvoid.zip)
 
-Game can also be player at [play.unity.com](https://play.unity.com/mg/other/project-void-sprint-week-project).
+Game can also be played at [play.unity.com](https://play.unity.com/mg/other/project-void-sprint-week-project).
