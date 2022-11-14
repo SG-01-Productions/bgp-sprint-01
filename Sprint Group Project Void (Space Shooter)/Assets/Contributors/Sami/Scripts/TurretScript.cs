@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    [SerializeField] Camera playerCamera;
+    [SerializeField] Camera playerCamera; // Basically makes sure turret is rotated towards mouse.
 
     // Update is called once per frame
     void Start()
