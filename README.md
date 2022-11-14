@@ -4,6 +4,13 @@
 
 Game title: Project Void
 
+Creators:
+- Sami Uski
+- Jeremy LeBlanc
+- Kristian Kantola
+- Henri Kivimaa
+- Vili Jalonen
+
 Build can be found from this link: [Link](https://kantola.eu/files/projectvoid.zip)
 
 Game can also be player at [play.unity.com](https://play.unity.com/mg/other/project-void-sprint-week-project).
