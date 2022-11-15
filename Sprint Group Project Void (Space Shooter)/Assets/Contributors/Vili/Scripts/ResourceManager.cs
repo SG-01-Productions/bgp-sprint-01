@@ -15,7 +15,7 @@ public class ResourceManager : MonoBehaviour //Old Credits script
     public static ResourceManager Instance;
 
 
-    [SerializeField] readonly int missilePrice = 10000;
+    [SerializeField] int missilePrice = 10000;
     [SerializeField] int missileAmount = 10;
     [SerializeField] int repairPrice = 30000;
 
