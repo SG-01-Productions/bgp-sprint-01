@@ -107,7 +107,7 @@ author:
   name             : "SG-01 Productions"
   avatar           : "assets/SG01Square.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "We are a group of students at JAMK building and coding projects."
-  location         : "Finland"
+  location         : 
   email            :
   links:
     - label: "Email"
@@ -122,7 +122,7 @@ author:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "GitHub"
+    - label: "Project Void Repository"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/SG-01-Productions/bgp-sprint-01"
     - label: "Instagram"
