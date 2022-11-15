@@ -83,6 +83,7 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!isDead)
         {
             playerHealth = maxHealth;
+            UpdateRectMaskPadding();
             return playerHealth;
         } else return 0f;
     }
