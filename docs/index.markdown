@@ -4,9 +4,10 @@
 
 layout: home
 author_profile: true
-toc: true
 title: Lorem Ipsum
-
+toc: true
+toc_icon: "cog"
+toc_label: "My Table of Contents"
 ---
 
 # About Lorem Ipsum
