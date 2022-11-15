@@ -2,12 +2,24 @@
 # Feel free to add content and custom Front Matter to this file.
 # To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 
-layout: home
 author_profile: true
 title: Lorem Ipsum
 toc: true
 toc_icon: "cog"
 toc_label: "My Table of Contents"
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 ---
 
 # About Lorem Ipsum
