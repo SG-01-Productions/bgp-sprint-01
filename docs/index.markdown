@@ -18,7 +18,6 @@ defaults:
       read_time: true
       comments: true
       share: true
-      related: true
 ---
 
 # Welcome to Project Void!
