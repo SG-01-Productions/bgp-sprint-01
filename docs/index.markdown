@@ -33,18 +33,22 @@ The result of the one week project can be found from the branch alpha-release. T
 **Perspective:** Top-down, 2.5D <br>
 **Licence:** Freemium
 
+## Where to play
+
+Build can be found from here: [Project Void version alpha](https://kantola.eu/files/projectvoid.zip)
+
+Game can also be played at [play.unity.com.](https://play.unity.com/mg/other/project-void-sprint-week-project)
+
+
+## Creators:
+
+- [Sami Uski](https://github.com/Rykmentti)
+- [Jeremy LeBlanc](https://github.com/LeBlancJS88)
+- [Kristian Kantola](https://github.com/K9958)
+- [Henri Kivimaa](https://github.com/Hemiger)
+- [Vili Jalonen](https://github.com/Vilonen)
+
 
 ## About licences
 
 Project contains Unity Asset Store assets that the SG-01 Productions have a licence to use. Those assets are available on free at https://assetstore.unity.com/.
-
-Creators:
-
-Sami Uski
-Jeremy LeBlanc
-Kristian Kantola
-Henri Kivimaa
-Vili Jalonen
-Build can be found from here: Project Void version alpha
-
-Game can also be played at play.unity.com.
