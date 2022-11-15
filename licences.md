@@ -12,3 +12,5 @@
 
 - Copyright free licence, attribution required (commercial):
   - [Karl Casey @ White Bat Audio](https://karlcasey.bandcamp.com/)
+
+## USE OF THIS PROJECT WITHOUT HAVING THIS FILE OR WITHOUT ATTRIBUTING THE CREATORS IS PROHIBITED
