@@ -5,4 +5,10 @@
   - Computer Icons Pointer CSS-Sprites, jigglypuff, angle, rectangle png (in game: HUD arrow pointing towards next SpaceStation)
 
 - Unity Assetstore Standard Licence:
-  - F3 Corvette by cgpitbull
+  - [F3 Corvette by cgpitbull](https://assetstore.unity.com/packages/3d/vehicles/space/federation-corvette-f3-79860)
+
+- CC Attribution (Creative Commons, commercial)
+  - [Space Station 3D Model by FPSunreal](https://sketchfab.com/3d-models/space-station-edf17c3d57584cf2acefc72ecccb8058)
+
+- Copyright free licence, attribution required (commercial):
+  - [Karl Casey @ White Bat Audio](https://karlcasey.bandcamp.com/)
