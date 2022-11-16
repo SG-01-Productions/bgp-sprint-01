@@ -37,6 +37,8 @@ The result of the one week project can be found from the branch alpha-release. T
 
 Game can be played at play.unity.com. Click the "Play" button below!
 
+Note: Play.unity.com might return an error when loading the content. Just keep refreshing the page until it loads!
+
 <iframe id='webgl_iframe' frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr=""
     mozallowfullscreen="true" src="https://play.unity.com/webgl/d38ac1fe-eb25-4716-8fc7-a52660fb40e4?screenshot=false&embedType=embed"  width="810"
     height="auto" onmousewheel="" webkitallowfullscreen="true">
