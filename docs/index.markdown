@@ -41,7 +41,7 @@ Note: Play.unity.com might return an error when loading the content. Just keep r
 
 <iframe id='webgl_iframe' frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr=""
     mozallowfullscreen="true" src="https://play.unity.com/webgl/d38ac1fe-eb25-4716-8fc7-a52660fb40e4?screenshot=false&embedType=embed"  width="810"
-    height="900" onmousewheel="" webkitallowfullscreen="true">
+    height="700" onmousewheel="" webkitallowfullscreen="true">
 </iframe>
 
 ### Download
