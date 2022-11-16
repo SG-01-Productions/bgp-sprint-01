@@ -5,7 +5,7 @@
 author_profile: true
 toc: true
 header:
-  overlay_image: "assets/cropped.png"
+  image: "assets/cropped.png"
 
 defaults:
   # _posts
