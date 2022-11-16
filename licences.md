@@ -13,4 +13,7 @@
 - Copyright free licence, attribution required (commercial):
   - [Karl Casey @ White Bat Audio](https://karlcasey.bandcamp.com/)
 
-#### USE OF THIS PROJECT OR PROJECT ASSETS OR DATA WITHOUT HAVING THIS FILE OR WITHOUT ATTRIBUTING THE CREATORS IS PROHIBITED
+- Copyright free, no attribution required
+  - Project scripts are produced by the team developing this project unless otherwise mentioned in the scripts. Project's scripts can be used without any attribution.
+
+#### USE OF THIS PROJECT OR ANY PART OF THIS PROJECT WITHOUT HAVING THE ACCORDING LICENCES IS PROHIBITED
