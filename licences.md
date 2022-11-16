@@ -16,4 +16,4 @@
 - Copyright free, no attribution required
   - Project scripts are produced by the team developing this project unless otherwise mentioned in the scripts. Project's scripts can be used without any attribution.
 
-#### USE OF THIS PROJECT OR ANY PART OF THIS PROJECT WITHOUT HAVING THE ACCORDING LICENCES IS PROHIBITED
+#### USE OF THIS PROJECT OR ANY PART OF THIS PROJECT WITHOUT HAVING THE ACCORDING LICENCE IS PROHIBITED
