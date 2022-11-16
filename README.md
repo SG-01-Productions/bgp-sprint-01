@@ -2,15 +2,17 @@
 
 Project Void is a game demo development project that was originally started as a sprint (1-week) project for JAMK (Jyväskylä School of Applied Sciences) course Basics of Game Programming (BGP).
 
-> The result of the one week project can be found from the branch `alpha-release`. The `main` branch is a continuation of the project.
+> About branches:
+> The result of the one week project can be found from the branch `alpha-release`.
+> The `main` branch is a continuation of the project.
+> `production` branch contains the latest end-user version of the game.
 
 Game title: Project Void  <br>
 Genre: Space Shooter  <br>
 Perspective: Top-down, 2.5D  <br>
 Licence: Freemium
 
-Project contains Unity Asset Store assets that the SG-01 Productions have a licence to use. Those assets are available on free at [https://assetstore.unity.com/](https://assetstore.unity.com/).
-
+Licences and legal information in [licences.md](licences.md).
 
 Creators:
 - [Sami Uski](https://github.com/Rykmentti)
