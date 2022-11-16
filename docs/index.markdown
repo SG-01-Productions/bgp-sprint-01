@@ -39,7 +39,12 @@ The result of the one week project can be found from the branch alpha-release. T
 
 <iframe id='webgl_iframe' frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr=""
     mozallowfullscreen="true" src="https://play.unity.com/webgl/d38ac1fe-eb25-4716-8fc7-a52660fb40e4?screenshot=false&embedType=embed"  width="810"
-    height="640" onmousewheel="" webkitallowfullscreen="true"></iframe>
+    height="640" onmousewheel="" webkitallowfullscreen="true">
+</iframe>
+
+Test
+
+<iframe id="webgl_iframe" frameborder="0" allow="autoplay; fullscreen; vr" allowfullscreen="" allowvr="" mozallowfullscreen="true" src="https://play.unity.com/webgl/d38ac1fe-eb25-4716-8fc7-a52660fb40e4?screenshot=true&amp;embedType=detail" width="100%" height="580" onmousewheel="" webkitallowfullscreen="true"></iframe>
 
 Game can also be played at [play.unity.com.](https://play.unity.com/mg/other/project-void-sprint-week-project)
 
