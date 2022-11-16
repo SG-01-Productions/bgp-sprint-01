@@ -23,3 +23,8 @@ Build can be found from here: [Project Void version alpha](https://kantola.eu/fi
 
 Game can also be played at [play.unity.com](https://play.unity.com/mg/other/project-void-sprint-week-project).
 
+# Use of GitHub Actions in this Project
+
+Build of this game is automated through the use of *GitHub Actions Workflow*. It makes automatic build of the game whenever a push or merge happens at `production` branch.
+
+We also have Pages integration workflow, GitHub Pages are visible [here!](https://sg-01-productions.github.io/bgp-sprint-01/)
