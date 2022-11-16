@@ -12,7 +12,7 @@ Genre: Space Shooter  <br>
 Perspective: Top-down, 2.5D  <br>
 Licence: Freemium
 
-Licences and legal information in [licences.md](licences.md).
+Licences (associated with the project) and legal information in [licences.md](licences.md).
 
 Creators:
 - [Sami Uski](https://github.com/Rykmentti)
