@@ -20,8 +20,6 @@ defaults:
       share: true
 ---
 
-# Welcome to Project Void!
-
 ## What is Project Void
 
 Project Void is a game demo development project that was originally started as a sprint (1-week) project for JAMK (Jyväskylä School of Applied Sciences) course Basics of Game Programming (BGP).
