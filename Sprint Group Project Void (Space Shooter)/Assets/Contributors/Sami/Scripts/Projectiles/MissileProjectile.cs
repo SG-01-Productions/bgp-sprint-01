@@ -15,17 +15,18 @@ public class MissileProjectile : MonoBehaviour
 
     [SerializeField] float damage;
     [SerializeField] float speed;
-    [SerializeField] float missileTurnrate = 0.01f;
+    [SerializeField] float missileTurnrate;
     float selfDestroyDelay;
     bool isDestroyed;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         audioClip = Resources.Load("MissileExplosionSound") as AudioClip;
         audioSource.clip = audioClip;
-        audioSource.volume = 0.25f;
+        audioSource.volume = 0.5f;
 
+        missileTurnrate = 0.025f;
         damage = 5000; //Insert amount of damage here. If you want to test stuff, leave damage at zero.
         speed = 500; //Insert amount of speed here. How fast the projectile travels.
         selfDestroyDelay = 5; //Times it takes for the projectile to destroy itself, Default 5 seconds;
@@ -37,7 +38,9 @@ public class MissileProjectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate() 
+        // REALLY big difference in missile turnrate, depending if this script run on Regular update or fixed update. Fixed Update is better, because it is always 50 frames per second (50 times second), no matter what.
+        //Update is all over the place, difference in WebGL implementation is most apparent.
     {
         if (isDestroyed == false) //Checking if the missile has been destroyed, so we can do stuff after "destruction"
         {
@@ -72,16 +75,24 @@ public class MissileProjectile : MonoBehaviour
     }
     void DestroySelf()
     {
-        isDestroyed = true;
-        gameObject.transform.Find("missile").gameObject.SetActive(false);
-        gameObject.transform.Find("fire").gameObject.SetActive(false);
-        gameObject.GetComponentInChildren<ParticleSystem>().Stop();
-        audioSource.Play();
-        StartCoroutine(Countdown());
-        IEnumerator Countdown()
+        if (isDestroyed == false)
         {
-            yield return new WaitForSeconds(5f);
-            Destroy(gameObject);
+            isDestroyed = true;
+            Collider[] colliders = GetComponents<Collider>(); //Gets all colliders from  gameObject and makes them into an array.
+            foreach (Collider collider in colliders) // disables all colliders, in the array. To prevent colliders destroying objects, after the missile has been disabled
+            {
+                collider.enabled = false;
+            }
+            gameObject.transform.Find("missile").gameObject.SetActive(false);
+            gameObject.transform.Find("fire").gameObject.SetActive(false);
+            gameObject.GetComponentInChildren<ParticleSystem>().Stop();
+            audioSource.Play();
+            StartCoroutine(Countdown());
+            IEnumerator Countdown()
+            {
+                yield return new WaitForSeconds(5f);
+                Destroy(gameObject);
+            } 
         }
     }
     void MissileTargetingRoutine()
@@ -91,24 +102,11 @@ public class MissileProjectile : MonoBehaviour
 
         void PingEnemy()
         {
-            targetingCollider.radius += 10f;
+            targetingCollider.radius += 20f;
         }
     }
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && targetingCollider.enabled == false)  // Better identifier now. If object has enemy tag, this will work on all entities, that have Enemy and Asteroid tag.
-        {
-            if (collision.gameObject.transform == targetTransform)
-            {
-                collision.gameObject.GetComponent<HealthManager>().ReceiveDamage(damage);
-                DestroySelf();
-            }
-            else
-            {
-                targetTransform = collision.gameObject.GetComponent<Transform>();
-            }
-            //Debug.Log("Missile hit Enemy Target! " + collision.name);
-        }
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Asteroid") || collision.gameObject.CompareTag("FieldAsteroid") && targetingCollider.enabled == true)
         {
             targetingCollider.enabled = false;
@@ -118,7 +116,15 @@ public class MissileProjectile : MonoBehaviour
             
         }
     }
-    //Much better to implemethis with enabling and disabling of components, rather than destroy object and create a DeathSoundPlayer
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Asteroid") || other.gameObject.CompareTag("FieldAsteroid") && targetingCollider.enabled == false)
+        {
+            other.gameObject.GetComponent<HealthManager>().ReceiveDamage(damage);
+            DestroySelf();
+        }
+    }
+    //Much better to implement this with enabling and disabling of components, rather than destroy object and create a DeathSoundPlayer
     /*
     private void OnDestroy()
     {
