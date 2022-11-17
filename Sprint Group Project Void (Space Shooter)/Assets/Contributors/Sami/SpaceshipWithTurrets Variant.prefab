@@ -19690,6 +19690,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   credits: 0
+  missileAmount: 10
+  repairPrice: 30000
+  creditsAmountElement: {fileID: 0}
 --- !u!114 &8751222691014583018
 MonoBehaviour:
   m_ObjectHideFlags: 0
