@@ -153,4 +153,15 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         return playerHealth / maxHealth;
     }
+
+    public bool UpgradeMaxHealth(float health)
+    {
+        if (!isDead)
+        {
+            maxHealth += health;
+            HealFull();
+            return true;
+        }
+        else return false;
+    }
 }
