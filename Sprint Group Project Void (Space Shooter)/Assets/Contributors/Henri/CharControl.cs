@@ -12,10 +12,20 @@ public class CharControl : MonoBehaviour
     private Vector2 InputVector;
     private Vector2 CurrentMovement;
     private Rigidbody ShipRigidbody;
-    [SerializeField] private float Speed;
-    [SerializeField] private float StrafeSpeed;
-    [SerializeField] private float RotationSpeed;
+    [SerializeField] private float speed = 40f;
+    [SerializeField] private float strafeSpeed = 20f;
+    [SerializeField] private float rotationSpeed = 400f;
+    [SerializeField] private float baseSpeed;
+    [SerializeField] private float baseStrafeSpeed;
+    [SerializeField] private float baseRotationSpeed;
     private Transform ShipTransform;
+
+    public float Speed { get { return speed; } set { speed = value; } }
+    public float StrafeSpeed { get { return strafeSpeed; } set { strafeSpeed = value; } }
+    public float RotationSpeed { get { return rotationSpeed; } set { rotationSpeed = value; } }
+    public float BaseSpeed { get { return baseSpeed; } }
+    public float BaseStrafeSpeed { get { return baseStrafeSpeed; } }
+    public float BaseRotationSpeed { get { return baseRotationSpeed; } }
 
     /// <summary>
     /// Particle system variables
@@ -107,12 +117,12 @@ public class CharControl : MonoBehaviour
     /// </summary>
     public void MoveShip()
     {
-        ShipRigidbody.AddForce(CurrentMovement.y * Speed * ShipTransform.forward, ForceMode.Force);
+        ShipRigidbody.AddForce(CurrentMovement.y * speed * ShipTransform.forward, ForceMode.Force);
         if (Keyboard.current.shiftKey.isPressed) {
-            ShipRigidbody.AddForce(CurrentMovement.x * StrafeSpeed * ShipTransform.right, ForceMode.Force);
+            ShipRigidbody.AddForce(CurrentMovement.x * strafeSpeed * ShipTransform.right, ForceMode.Force);
         } else
         {
-            ShipRigidbody.AddTorque(0, 0, -CurrentMovement.x * RotationSpeed);
+            ShipRigidbody.AddTorque(0, 0, -CurrentMovement.x * rotationSpeed);
         }
         
         
@@ -139,6 +149,10 @@ public class CharControl : MonoBehaviour
     {
         ShipRigidbody = GetComponent<Rigidbody>();
         ShipTransform = GetComponent<Transform>();
+        // Set base values
+        baseSpeed = speed;
+        baseStrafeSpeed = strafeSpeed;
+        baseRotationSpeed = rotationSpeed;
     }
     // Update is called once per frame
     void FixedUpdate()
