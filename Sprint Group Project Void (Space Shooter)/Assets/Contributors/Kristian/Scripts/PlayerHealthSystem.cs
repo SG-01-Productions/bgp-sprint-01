@@ -135,6 +135,7 @@ public class PlayerHealthSystem : MonoBehaviour
     /// <summary>
     /// Updates player health bar in the HUD.
     /// </summary>
+    // Masks player health with Rect Mask 2D to visualize the amount of available health
     private void UpdateHealthHUD()
     {
         var healthFraction = GetHealthFraction();
