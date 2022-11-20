@@ -140,7 +140,7 @@ public class PlayerHealthSystem : MonoBehaviour
         var healthFraction = GetHealthFraction();
         float rectHeight = healthMaskSprite.rect.height;
         var padding = (1f - healthFraction) * rectHeight;
-        Debug.Log(padding);
+        //Debug.Log(padding);
         var maskRectMask = healthMaskSprite.GetComponent<RectMask2D>();
         maskRectMask.padding = new Vector4(0, 0, 0, padding);
     }
