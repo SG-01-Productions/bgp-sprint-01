@@ -79,7 +79,7 @@ public class MissileProjectile : MonoBehaviour
         {
             isDestroyed = true;
             Collider[] colliders = GetComponents<Collider>(); //Gets all colliders from  gameObject and makes them into an array.
-            foreach (Collider collider in colliders) // disables all colliders, in the array. To prevent colliders destroying objects, after the missile has been disabled
+            foreach (Collider collider in colliders) // disables all colliders, in the array, to prevent colliders destroying objects, after the missile has been disabled.
             {
                 collider.enabled = false;
             }
