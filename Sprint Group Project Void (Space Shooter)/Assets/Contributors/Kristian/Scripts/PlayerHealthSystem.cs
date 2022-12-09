@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +20,10 @@ public class PlayerHealthSystem : MonoBehaviour
 
     [SerializeField] private RectTransform healthMaskSprite;
 
+    private delegate void OnHealthUpdated();
+
+    private OnHealthUpdated onHealthUpdated;
+
     /// <summary>
     /// Function to damage player health specified amount. If player health drops to 0, player will die.
     /// </summary>
@@ -31,7 +34,7 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!isDead)
         {
             playerHealth -= damage;
-            UpdateRectMaskPadding();
+            onHealthUpdated();
             if (playerHealth < 0)
             {
                 PlayerDie();
@@ -69,7 +72,7 @@ public class PlayerHealthSystem : MonoBehaviour
             {
                 playerHealth += heal;
             }
-            UpdateRectMaskPadding();
+            onHealthUpdated();
             return playerHealth;
         }
         else return 0f;
@@ -83,7 +86,7 @@ public class PlayerHealthSystem : MonoBehaviour
         if (!isDead)
         {
             playerHealth = maxHealth;
-            UpdateRectMaskPadding();
+            onHealthUpdated();
             return playerHealth;
         } else return 0f;
     }
@@ -93,6 +96,17 @@ public class PlayerHealthSystem : MonoBehaviour
         Instance = this;
         playerObject = gameObject;
         finalScoreScreen.SetActive(false);
+    }
+
+    private void Start()
+    {
+        onHealthUpdated = UpdateHealthHUD;
+        onHealthUpdated += DebugHealth;
+    }
+
+    private void DebugHealth()
+    {
+        Debug.Log($"Playerhealth is now {playerHealth}");
     }
 
     // This part is only for debugging
@@ -118,18 +132,36 @@ public class PlayerHealthSystem : MonoBehaviour
         }
     }
 
-    private void UpdateRectMaskPadding()
+    /// <summary>
+    /// Updates player health bar in the HUD.
+    /// </summary>
+    // Masks player health with Rect Mask 2D to visualize the amount of available health
+    private void UpdateHealthHUD()
     {
         var healthFraction = GetHealthFraction();
         float rectHeight = healthMaskSprite.rect.height;
         var padding = (1f - healthFraction) * rectHeight;
-        Debug.Log(padding);
+        //Debug.Log(padding);
         var maskRectMask = healthMaskSprite.GetComponent<RectMask2D>();
         maskRectMask.padding = new Vector4(0, 0, 0, padding);
     }
-
+    /// <summary>
+    /// Gets the fraction of player current health
+    /// </summary>
+    /// <returns>float fraction of the player remaining health</returns>
     private float GetHealthFraction()
     {
         return playerHealth / maxHealth;
+    }
+
+    public bool UpgradeMaxHealth(float health)
+    {
+        if (!isDead)
+        {
+            maxHealth += health;
+            HealFull();
+            return true;
+        }
+        else return false;
     }
 }
